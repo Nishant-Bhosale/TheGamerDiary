@@ -1,0 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+#mainContainer{
+  position: relative;
+  min-height: 100vh;
+}
+
+#contentWrap{
+  padding: 80px 0;
+}

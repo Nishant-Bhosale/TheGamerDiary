@@ -1,0 +1,30 @@
+#footerContainer{
+    position: absolute;
+    bottom: 0;
+    background-color: #23272a;
+    color: white;
+    height: 80px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#copyInfo{
+    margin-left: 20px;
+}
+#socialHandles{
+    width: 30%;
+    background-color: red;
+}
+#socialList{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.socials{
+    text-decoration: none;
+    color: white;
+}

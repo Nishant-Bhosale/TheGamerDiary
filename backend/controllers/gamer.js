@@ -7,6 +7,7 @@ const addGamer = asyncHandler(async (req, res) => {
 	const { name, money, amountOfTime, pcId, gamerId } = req.body;
 
 	if (gamerId) {
+		//Conditional will execute if gamerId is sent
 		const gamer = await Gamer.findById(gamerId);
 
 		gamer.startTime = new Date();
@@ -19,7 +20,7 @@ const addGamer = asyncHandler(async (req, res) => {
 		gamer.totalTime += amountOfTime;
 
 		const pc = await PC.findOne({ pcNumber: pcId });
-
+		//We can handle this in the fornt end
 		if (pc.isOccupied) {
 			res.status(400);
 			throw new Error("PC already occupied");
@@ -32,6 +33,7 @@ const addGamer = asyncHandler(async (req, res) => {
 		await gamer.save();
 		res.status(201).json({ gamer });
 	} else {
+		//Conditional satement executes if Gamer ID is not sent
 		const startTime = new Date();
 
 		const endTime = moment(startTime).add(amountOfTime, "m").toDate();
@@ -53,6 +55,7 @@ const addGamer = asyncHandler(async (req, res) => {
 
 		const pc = await PC.findOne({ pcNumber: pcId });
 
+		//Again, this can be handled on the frontend
 		if (pc.isOccupied) {
 			res.status(400);
 			throw new Error("PC already occupied");
