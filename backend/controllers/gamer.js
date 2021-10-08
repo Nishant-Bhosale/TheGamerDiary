@@ -66,3 +66,16 @@ const addGamer = asyncHandler(async (req, res) => {
 		res.status(201).json({ gamer });
 	}
 });
+
+const getGamer = asyncHandler(async (req, res) => {
+	const gamer = await Gamer.findById(req.params.id);
+
+	if (!gamer) {
+		res.status(400);
+		throw new Error("Gamer not found");
+	}
+
+	res.status(200).json({ gamer });
+});
+
+module.exports = { getGamer, addGamer };
