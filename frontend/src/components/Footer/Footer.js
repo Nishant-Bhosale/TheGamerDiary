@@ -1,5 +1,5 @@
-import React from react 
-import "./Footer.css"
+import React from 'react'
+import "./Footer.css";
 
 const Footer = () => {
     return (
@@ -12,11 +12,11 @@ const Footer = () => {
           <a href="#"><span>A</span>rcadian</a>
         </div>
         <div className={styles.media-icons}>
-          <a href="#"><i className={styles.fab fa-facebook-f}></i></a>
-          <a href="#"><i className={styles.fab fa-twitter}></i></a>
-          <a href="#"><i className={styles.fab fa-instagram}></i></a>
-          <a href="#"><i className={styles.fab fa-linkedin-in}></i></a>
-          <a href="#"><i className={styles.fab fa-youtube}></i></a>
+          <a href="/"><i className="fab fa-facebook" to="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"></i></a>
+          <a href="/"><i className="fab fa-twitter" to="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"></i></a>
+          <a href="/"><i className="fab fa-linkedin" to="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"></i></a>
+          <a href="/"><i className="fab fa-youtube" to="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"></i></a>
+          <a href="/"><i className="fab fa-instagram" to="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"></i></a>
         </div>
       </div>
     </div>
