@@ -99,7 +99,7 @@ const removeGamer = asyncHandler(async (req, res) => {
 });
 
 const updateGamer = asyncHandler(async (req, res) => {
-	const { amountOfTime, money, name } = req.body;
+	const { amountOfTime, money } = req.body;
 
 	const gamer = await Gamer.findById(req.params.id);
 
