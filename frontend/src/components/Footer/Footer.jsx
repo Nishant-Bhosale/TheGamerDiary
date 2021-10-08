@@ -1,4 +1,4 @@
-import React from react 
+import React from 'react'; 
 import "./Footer.css"
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
           <a href="#"><span>A</span>rcadian</a>
         </div>
         <div className={styles.media-icons}>
-          <a href="#"><i className={styles.fab fa-facebook-f}></i></a>
+          <a href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"><i className={styles.fab fa-facebook-f} to=""></i></a>
           <a href="#"><i className={styles.fab fa-twitter}></i></a>
           <a href="#"><i className={styles.fab fa-instagram}></i></a>
           <a href="#"><i className={styles.fab fa-linkedin-in}></i></a>
