@@ -9,7 +9,7 @@ const Footer = () => {
     <div className={styles.content}>
       <div className={styles.top}>
         <div className={styles.main-logo}>
-          <a href="#"><span>A</span>rcadian</a>
+          <a href="#"><span>Gaming</span>Diary</a>
         </div>
         <div className={styles.media-icons}>
           <a href="/"><i className="fab fa-facebook" to="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"></i></a>

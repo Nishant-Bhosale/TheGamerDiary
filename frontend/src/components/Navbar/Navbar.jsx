@@ -32,7 +32,7 @@ const Navbar = () => {
         <header className={styles.main}>
             <nav className={styles.mainnav}>
                 <div className={styles.mainlogo}>
-                    <a href="/"><span>GAME &nbsp;</span>PARLOUR</a>
+                    <a href="/"><span>GAMING &nbsp;</span>Diary</a>
                 </div>
                 <div className={styles.name}>
                     <span>Welcome Name</span>
