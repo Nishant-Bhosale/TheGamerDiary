@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require('cors');
+const { errorMiddleware, notFound } = require("./middleware/errorMiddleware");
 const PORT = process.env.PORT;
 
 //Importing Routers
@@ -20,6 +21,9 @@ app.use(cors());
 app.use(gamerRouter);
 app.use(admin);
 app.use(authoriseAdmin);
+
+app.use(errorMiddleware);
+app.use(notFound);
 
 app.listen(PORT, () =>
 	console.log(`Server running at http://127.0.0.1:${PORT}`),

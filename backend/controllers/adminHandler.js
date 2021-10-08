@@ -14,11 +14,11 @@ const adminHandler = async (req, res) => {
                 })
                 res.status(200).json({ authentication: true, jwtToken: token, message: 'Login Success' })
             } else {
+                console.log(match.email)
                 res.status(404).send()
             }
 
         } catch (err) {
-            console.log(err)
             res.status(500).send();
         }
     } else {
