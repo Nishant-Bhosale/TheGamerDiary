@@ -78,4 +78,45 @@ const getGamer = asyncHandler(async (req, res) => {
 	res.status(200).json({ gamer });
 });
 
-module.exports = { getGamer, addGamer };
+const removeGamer = asyncHandler(async (req, res) => {
+	const gamer = await Gamer.findById(req.params.id);
+
+	gamer.isPlaying = false;
+
+	const pc = await PC.findOne({ currentGamer: req.params.id });
+
+	if (!pc) {
+		res.status(400);
+		throw new Error("PC not found");
+	}
+
+	pc.isOccupied = false;
+	pc.currentGamer = null;
+
+	await pc.save();
+	await gamer.save();
+	res.status(200).json({ message: "Gamer Session removed" });
+});
+
+const updateGamer = asyncHandler(async (req, res) => {
+	const { amountOfTime, money, name } = req.body;
+
+	const gamer = await Gamer.findById(req.params.id);
+
+	if (!gamer) {
+		res.status(400);
+		throw new Error("Gamer not found");
+	}
+
+	gamer.totalMoneyPaid += money;
+	const updatedTime = moment(gamer.endTime).add(amountOfTime, "m").toDate();
+
+	gamer.totalTime += amountOfTime;
+	gamer.endTime = updatedTime;
+
+	await gamer.save();
+
+	res.status(200).json({ gamer });
+});
+
+module.exports = { getGamer, addGamer, removeGamer, updateGamer };
