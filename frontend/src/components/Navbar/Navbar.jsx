@@ -42,7 +42,7 @@ const Navbar = () => {
                     <li className={styles.mainnavitem}><a href="/">LogOut</a></li>
                    
                 </ul>
-                <div className={styles.burger} onClick={navSlide}>
+                <div className={styles.burger} onClick={navSlide}>``
                     <div className={styles.line1}></div>
                     <div className={styles.line2}></div>
                     <div className={styles.line3}></div>
