@@ -29,22 +29,22 @@ const Navbar = () => {
     return (
 
     <React.Fragment>
-        <header className="main">
-            <nav className="main-nav">
-                <div className="main-logo">
+        <header className={styles.main}>
+            <nav className={styles.main-nav}>
+                <div className={styles.main-logo}>
                     <a href="#"><span>GAME &nbsp;</span>PARLOUR</a>
                 </div>
-                <div className="name">
+                <div className={styles.name}>
                     <span>Welcome Name</span>
                 </div>
-                <ul className="main-nav-items">
-                    <li className="main-nav-item"><a href="#">Manage</a></li>
-                    <li className="main-nav-item"><a href="#">LogOut</a></li>
+                <ul className={styles.main-nav-items}>
+                    <li className={styles.main-nav-item}><a href="#">Manage</a></li>
+                    <li className={styles.main-nav-item}><a href="#">LogOut</a></li>
                 </ul>
-                <div className="burger" onClick={navSlide}>
-                    <div className="line1"></div>
-                    <div className="line2"></div>
-                    <div className="line3"></div>
+                <div className={styles.burger} onClick={navSlide}>
+                    <div className={styles.line1}></div>
+                    <div className={styles.line2}></div>
+                    <div className={styles.line3}></div>
                 </div>
             </nav>
         </header>
