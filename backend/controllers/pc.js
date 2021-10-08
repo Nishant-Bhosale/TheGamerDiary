@@ -27,10 +27,21 @@ const getPC = asyncHandler(async (req, res) => {
 	res.status(200).json({ pcs: PCs });
 });
 
+const updatePC = asyncHandler(async (req, res) => {
+	const pc = await PC.findOne({ pcNumber: req.body.number });
+
+	pc.isOccupied = false;
+	pc.currentGamer = null;
+
+	await pc.save();
+
+	res.status(200).json({ pc });
+});
+
 const getFreePCs = asyncHandler(async (req, res) => {
 	const PCs = await PC.find({ isOccupied: false });
 
 	res.status(200).json({ PCs });
 });
 
-module.exports = { addPC, getPC, getFreePCs };
+module.exports = { addPC, getPC, getFreePCs, updatePC };
