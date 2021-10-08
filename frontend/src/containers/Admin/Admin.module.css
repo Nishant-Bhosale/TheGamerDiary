@@ -1,36 +1,70 @@
 #formContainer{
-    background-color: skyblue;
-    min-height: calc(100vh - 220px);
+    background-image: url(logo.png)  ;
+    background-color: whitesmoke;
+    background-position: center;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
     padding: 30px 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 #loginForm{
-    background-color: yellow;
+    background:cyan;
+    opacity: 0.9;
     height: 50vh;
     width: 25%;
     margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
+    display: block;
+    padding-top: 100px;
+    flex-direction: column;border-radius: 20px;
     align-items: center;
     justify-content: space-evenly;
+    border: 2px solid rgb(85, 85, 49) ;
 }
 
 .formHeading{
+    color: rgb(27, 103, 218);
     font-size: 1.5em;
     font-weight: bold;
+    position: relative;
+    margin-left: 12%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     text-transform: uppercase;
 }
 input{
     outline: none;
-    border: none;
+    border: 2px solid blue;
+    margin: 20px;
+}
+input:hover{
+    color: white;
+    background-color: black;
 }
 .loginInput{
     width: 70%;
     height: 50px;
     padding-left: 15px;
+    margin-left: 12%;
     font-size: 18px;
-
+    border-radius: 10px;
+}
+Button{
+    color: black;
+    background: rgb(228, 223, 215);
+    position: absolute;
+    border-radius: 5px;
+    top: 68%;
+    left: 47%;
+    padding: 10px;
+    width: 90px;
+    height: 35px;
+}
+Button:hover{
+    color: rgb(228, 223, 215);
+    background: black;
 }
