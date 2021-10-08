@@ -119,4 +119,23 @@ const updateGamer = asyncHandler(async (req, res) => {
 	res.status(200).json({ gamer });
 });
 
-module.exports = { getGamer, addGamer, removeGamer, updateGamer };
+const getGamersOfASpecificDate = asyncHandler(async (req, res) => {
+	const { date } = req.body;
+
+	const gamers = await Gamer.find({ createdOn: date });
+
+	if (gamers.length === 0) {
+		res.status(200).json({ message: `No gamers for found on ${date} ` });
+		return;
+	}
+
+	res.status(200).json({ gamers });
+});
+
+module.exports = {
+	getGamer,
+	addGamer,
+	removeGamer,
+	updateGamer,
+	getGamersOfASpecificDate,
+};
