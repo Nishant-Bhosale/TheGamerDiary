@@ -7,7 +7,7 @@
 .main{
     background: linear-gradient(to left, #5c5252cc ,#e4e498 ) fixed;
 }
-.main-nav{
+.mainNav{
     display: flex;
     position: sticky;
 }
