@@ -41,7 +41,7 @@ const Navbar = () => {
                     <li className={styles.main-nav-item}><a href="#">Manage</a></li>
                     <li className={styles.main-nav-item}><a href="#">LogOut</a></li>
                 </ul>
-                <div className={styles.burger} onClick={navSlide}>
+                <div className={styles.burger} onClick={navSlide}>``
                     <div className={styles.line1}></div>
                     <div className={styles.line2}></div>
                     <div className={styles.line3}></div>

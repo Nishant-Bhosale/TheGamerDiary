@@ -1,19 +1,37 @@
-import React from 'react';
-import styles from './Footer.module.css';
+import React from react 
+import "./Footer.css"
 
-export default function Footer() {
+const Footer = () => {
     return (
-        <div id={styles.footerContainer}>
-            <div id={styles.copyInfo}>
-                <span>&copy; 2021 Logverse &#8482; All rights reserved.</span>
-            </div>
-            <div id={styles.socialHandles}>
-                <ul id={styles.socialList}>
-                    <li><a href="#" className={styles.socials} >INSTAGRAM</a></li>
-                    <li><a href="#" className={styles.socials} >GITHUB</a></li>
-                    <li><a href="#" className={styles.socials} >LINKEDIN</a></li>
-                </ul>
-            </div>
+
+    <React.Fragment>
+          <footer>
+    <div className={styles.content}>
+      <div className={styles.top}>
+        <div className={styles.main-logo}>
+          <a href="#"><span>A</span>rcadian</a>
         </div>
+        <div className={styles.media-icons}>
+          <a href="#"><i className={styles.fab fa-facebook-f}></i></a>
+          <a href="#"><i className={styles.fab fa-twitter}></i></a>
+          <a href="#"><i className={styles.fab fa-instagram}></i></a>
+          <a href="#"><i className={styles.fab fa-linkedin-in}></i></a>
+          <a href="#"><i className={styles.fab fa-youtube}></i></a>
+        </div>
+      </div>
+    </div>
+    <div className={styles.bottom-details}>
+      <div className={styles.bottom_text}>
+        <span className={styles.copyright_text}>Copyright © 2021 <hr></hr> <a href="#"><span>A</span>rcadian</a>All rights reserved</span>
+        <span className={styles.policy_terms}>
+          <a href="#">Privacy policy</a>
+          <hr></hr>
+          <a href="#">Terms & condition</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+    </React.Fragment>
     )
 }
+export default Navbar
