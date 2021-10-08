@@ -5,11 +5,11 @@ import { NavLink, Link } from 'react-router-dom';
 
 const navSlide = () => {
     const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.main-nav-items');
-    const navLinks = document.querySelectorAll('.main-nav-items li');
-    // <!-- burger.addEventListener('click', ()=>{ -->
+    const nav = document.querySelector('.mainnavitems');
+    const navLinks = document.querySelectorAll('.mainnavitems li');
+    // <! burger.addEventListener('click', ()=>{ >
          //Toggle Nav
-        nav.classList.toggle('nav-active');
+        nav.classList.toggle('navactive');
 
         //Animate Links
         navLinks.forEach((link,index) => {
@@ -18,7 +18,7 @@ const navSlide = () => {
             }else{
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index/7 + 0.5}s`;
             }
-        // <!-- }); -->
+        // <! }); >
         //Burger Animation
         burger.classList.toggle('toggle');
     });
@@ -30,21 +30,21 @@ const Navbar = () => {
 
     <React.Fragment>
         <header className={styles.main}>
-            <nav className={styles.mainNav}>
-                <div className="main-logo">
-                    <a href="/"><span>GAME &nbsp;</span>PARLOUR</a>
+            <nav className={styles.mainnav}>
+                <div className={styles.mainlogo}>
+                    <a href="#"><span>GAME &nbsp;</span>PARLOUR</a>
                 </div>
-                <div className="name">
+                <div className={styles.name}>
                     <span>Welcome Name</span>
                 </div>
-                <ul className="main-nav-items">
-                    <li className="main-nav-item"><a href="/">Manage</a></li>
-                    <li className="main-nav-item"><a href="/">LogOut</a></li>
+                <ul className={styles.mainnavitems}>
+                    <li className={styles.mainnavitem}><a href="#">Manage</a></li>
+                    <li className={styles.mainnavitem}><a href="#">LogOut</a></li>
                 </ul>
-                <div className="burger" onClick={navSlide}>
-                    <div className="line1"></div>
-                    <div className="line2"></div>
-                    <div className="line3"></div>
+                <div className={styles.burger} onClick={navSlide}>
+                    <div className={styles.line1}></div>
+                    <div className={styles.line2}></div>
+                    <div className={styles.line3}></div>
                 </div>
             </nav>
         </header>

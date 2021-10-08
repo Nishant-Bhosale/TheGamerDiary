@@ -1,28 +1,28 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    boxsizing: border-box;
 }
 
 .main{
     background: linear-gradient(to left, #5c5252cc ,#e4e498 ) fixed;
 }
-.mainNav{
+.mainnav{
     display: flex;
     position: sticky;
 }
-.main-logo{
+.mainlogo{
     display: flex;
     list-style: none;
     padding: 20px;
     font-size: 25px;
     
 }
-.main-logo a{
+.mainlogo a{
     text-decoration: none;
     color: #000000cc;
 }
-.main-logo span{
+.mainlogo span{
     font-size: 35px;
     color: rgb(112, 91, 160);   
 }
@@ -35,14 +35,14 @@
     margin-left: 70px;
     font-family:Arial, Helvetica, sans-serif;
 }
-.main-nav-items{
+.mainnavitems{
     display: flex;
-    list-style: none;
+    l0ist-style: none;
     padding: 20px;
     position: absolute;
     right: 0;
 }
-.main-nav-item{
+.mainnavitem{
     padding:0 10px;
     opacity: 0.7;
     margin-left:10px ;
@@ -50,16 +50,16 @@
     font-size: 25px;
     text-align: center;
 }
-.main-nav-item:hover{
+.mainnavitem:hover{
     background: #cececd;
     opacity: 1;
     border-radius: 10px;
 }
-.main-nav-items li a{
+.mainnavitems li a{
     text-decoration: none; 
     color: white;   
 }
-.main-nav-items li a:hover{
+.mainnavitems li a:hover{
     color: black;   
 }
 .burger{
@@ -78,7 +78,7 @@
         overflow-x: hidden;
     }
 
-    .main-nav-items{
+    .mainnavitems{
         position: absolute;
         right: -90px;
         height: 92vh;
@@ -93,10 +93,10 @@
         transition: transform 0.5s ease-in;
         display: none;
     }
-    .main-nav-item{
+    .mainnavitem{
         background: #e4e498;
     }
-    .main-nav-items li{
+    .mainnavitems li{
         opacity: 0;
     }
 
@@ -110,7 +110,7 @@
         margin-left: 40px;
     }
 }
-.nav-active{
+.navactive{
     transform: translatex(-9%);
     display: flex;
     padding:0;
@@ -122,17 +122,17 @@
     color: white;
     background-color: #e4e498;
 }
-.nav-active li{
+.navactive li{
     margin: 60px;
 }
-.nav-active li:hover{
+.navactive li:hover{
     background: #e4e498;
     opacity: 1;
     border-radius: 10px;
 }
 
 @keyframes navLinkFade{
-    form{
+    from{
         opacity: 0;
         transform: translateX(50px);
     }
