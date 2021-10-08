@@ -1,0 +1,41 @@
+#navbarContainer{
+    position: absolute;
+    top: 0;
+    background-color: #23272a;
+    height: 80px;
+    width: 100%;color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.homeLink, .navLink{
+    text-decoration: none;
+    color: white;
+}
+#loginPrompt:hover{
+    border-bottom: 2px solid #DB4437;
+}
+#logout{
+    cursor: pointer;
+}
+#navMeta{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: red;
+    margin-left: 20px;
+    width: 20%;
+}
+#navListContainer{
+    background-color: blue;
+    width: 20%;
+}
+#navList{
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
