@@ -35,7 +35,6 @@ const addGamer = asyncHandler(async (req, res) => {
 	} else {
 		//Conditional satement executes if Gamer ID is not sent
 		const startTime = new Date();
-
 		const endTime = moment(startTime).add(amountOfTime, "m").toDate();
 
 		if (startTime > endTime) {
@@ -102,7 +101,7 @@ const removeGamer = asyncHandler(async (req, res) => {
 });
 
 const updateGamer = asyncHandler(async (req, res) => {
-	const { amountOfTime, money, name } = req.body;
+	const { amountOfTime, money } = req.body;
 
 	const gamer = await Gamer.findById(req.params.id);
 
