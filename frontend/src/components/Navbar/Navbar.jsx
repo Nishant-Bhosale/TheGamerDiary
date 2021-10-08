@@ -32,14 +32,15 @@ const Navbar = () => {
         <header className={styles.main}>
             <nav className={styles.mainnav}>
                 <div className={styles.mainlogo}>
-                    <a href="#"><span>GAME &nbsp;</span>PARLOUR</a>
+                    <a href="/"><span>GAME &nbsp;</span>PARLOUR</a>
                 </div>
                 <div className={styles.name}>
                     <span>Welcome Name</span>
                 </div>
                 <ul className={styles.mainnavitems}>
-                    <li className={styles.mainnavitem}><a href="#">Manage</a></li>
-                    <li className={styles.mainnavitem}><a href="#">LogOut</a></li>
+                    <li className={styles.mainnavitem}><a href="/">Manage</a></li>
+                    <li className={styles.mainnavitem}><a href="/">LogOut</a></li>
+                   
                 </ul>
                 <div className={styles.burger} onClick={navSlide}>
                     <div className={styles.line1}></div>
