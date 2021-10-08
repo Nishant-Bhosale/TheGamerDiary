@@ -20,7 +20,7 @@ const addGamer = asyncHandler(async (req, res) => {
 		gamer.totalTime += amountOfTime;
 
 		const pc = await PC.findOne({ pcNumber: pcId });
-		//We can handle this in the fornt end
+		//We can handle this in the front end
 		if (pc.isOccupied) {
 			res.status(400);
 			throw new Error("PC already occupied");
