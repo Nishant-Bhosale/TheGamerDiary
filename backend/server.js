@@ -1,13 +1,14 @@
 const express = require("express");
 require("dotenv").config();
-const cors = require('cors');
+const cors = require("cors");
 const { errorMiddleware, notFound } = require("./middleware/errorMiddleware");
 const PORT = process.env.PORT;
 
 //Importing Routers
 const gamerRouter = require("./routes/gamer");
-const admin = require('./routes/admin');
-const authoriseAdmin = require('./routes/authoriseAdmin');
+const pcRouter = require("./routes/pc");
+const admin = require("./routes/admin");
+const authoriseAdmin = require("./routes/authoriseAdmin");
 
 //Initializing connection to the database
 const connectDB = require("./config/db");
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(gamerRouter);
+app.use(pcRouter);
 app.use(admin);
 app.use(authoriseAdmin);
 

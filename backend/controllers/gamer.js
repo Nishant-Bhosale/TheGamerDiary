@@ -20,7 +20,7 @@ const addGamer = asyncHandler(async (req, res) => {
 		gamer.totalTime += amountOfTime;
 
 		const pc = await PC.findOne({ pcNumber: pcId });
-		//We can handle this in the fornt end
+		//We can handle this in the front end
 		if (pc.isOccupied) {
 			res.status(400);
 			throw new Error("PC already occupied");
@@ -102,7 +102,7 @@ const removeGamer = asyncHandler(async (req, res) => {
 });
 
 const updateGamer = asyncHandler(async (req, res) => {
-	const { amountOfTime, money, name } = req.body;
+	const { amountOfTime, money } = req.body;
 
 	const gamer = await Gamer.findById(req.params.id);
 
