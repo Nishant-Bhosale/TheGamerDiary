@@ -31,9 +31,6 @@ function App() {
 		dispatch(fetchPcs());
 	}, [])
 
-	console.log(Pcs);
-	console.log(adminStatus)
-
 	const Private = ({ children, ...rest }) => {
 		return (
 			<Route {...rest} render={() => {

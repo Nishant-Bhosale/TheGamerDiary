@@ -9,21 +9,10 @@ const addGamer = asyncHandler(async (req, res) => {
 
 	if (gamer && gamer.createdOn == moment().format('L')) {
 		//Conditional will execute if gamerId is sent
-		const startTime = Date.now();
-		gamer.endTime = (startTime + (amountOfTime * 60 * 1000));
-		gamer.isPlaying = true;
+		gamer.endTime += (amountOfTime * 60 * 1000);
 		gamer.totalMoneyPaid += money;
 		gamer.totalTime += amountOfTime;
 
-		const pc = await PC.findOne({ pcNumber: pcId });
-		//We can handle this in the front end
-		if (pc.isOccupied) {
-			res.status(400);
-			throw new Error("PC already occupied");
-		}
-		pc.isOccupied = true;
-		pc.currentGamer = gamer._id;
-		await pc.save();
 		await gamer.save();
 		res.status(201).json({ gamer });
 	} else {
