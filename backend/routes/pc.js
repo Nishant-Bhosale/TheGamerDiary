@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getPC, addPC, getFreePCs } = require("../controllers/pc");
+const getPC = require("../controllers/pc");
 
-router.route("/pc").get(getPC).post(addPC);
-router.route("/pc/all").get(getFreePCs);
+router.route("/api/getPcs").get(getPC)
 module.exports = router;

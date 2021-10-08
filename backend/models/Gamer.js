@@ -8,11 +8,11 @@ const GamerSchema = new Schema(
 			type: String,
 		},
 		startTime: {
-			type: Date,
+			type: Number,
 			required: true,
 		},
 		endTime: {
-			type: Date,
+			type: Number,
 			required: true,
 		},
 		totalMoneyPaid: {

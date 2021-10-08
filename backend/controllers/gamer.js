@@ -5,16 +5,12 @@ const moment = require("moment");
 
 const addGamer = asyncHandler(async (req, res) => {
 	const { name, money, amountOfTime, pcId, gamerId } = req.body;
+	const gamer = await Gamer.findOne({ _id: gamerId });
 
-	if (gamerId) {
+	if (gamer && gamer.createdOn == moment().format('L')) {
 		//Conditional will execute if gamerId is sent
-		const gamer = await Gamer.findById(gamerId);
-
-		gamer.startTime = new Date();
-
-		const endTime = moment(gamer.startTime).add(amountOfTime, "m").toDate();
-
-		gamer.endTime = endTime;
+		const startTime = Date.now();
+		gamer.endTime = (startTime + (amountOfTime * 60 * 1000));
 		gamer.isPlaying = true;
 		gamer.totalMoneyPaid += money;
 		gamer.totalTime += amountOfTime;
@@ -25,23 +21,20 @@ const addGamer = asyncHandler(async (req, res) => {
 			res.status(400);
 			throw new Error("PC already occupied");
 		}
-
 		pc.isOccupied = true;
 		pc.currentGamer = gamer._id;
-
 		await pc.save();
 		await gamer.save();
 		res.status(201).json({ gamer });
 	} else {
 		//Conditional satement executes if Gamer ID is not sent
-		const startTime = new Date();
-		const endTime = moment(startTime).add(amountOfTime, "m").toDate();
+		const startTime = Date.now();
+		const endTime = (startTime + (amountOfTime * 60 * 1000));
 
 		if (startTime > endTime) {
 			res.status(400);
 			throw new Error("Invalid time");
 		}
-
 		const gamer = new Gamer({
 			name,
 			startTime,
@@ -49,7 +42,7 @@ const addGamer = asyncHandler(async (req, res) => {
 			isPlaying: true,
 			totalMoneyPaid: money,
 			totalTime: amountOfTime,
-			createdOn: moment(startTime).format("YYYY-MM-DD"),
+			createdOn: moment().format('L')
 		});
 
 		const pc = await PC.findOne({ pcNumber: pcId });
@@ -97,7 +90,7 @@ const removeGamer = asyncHandler(async (req, res) => {
 
 	await pc.save();
 	await gamer.save();
-	res.status(200).json({ message: "Gamer Session removed" });
+	res.status(200).send();
 });
 
 const updateGamer = asyncHandler(async (req, res) => {

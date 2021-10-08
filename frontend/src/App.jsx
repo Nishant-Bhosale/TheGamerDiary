@@ -9,6 +9,7 @@ import {
 //Authorising Admin
 import { useSelector, useDispatch } from 'react-redux';
 import { getAdminStatus } from './containers/Admin/adminSlice';
+import { fetchPcs } from './containers/Devices/deviceSlice';
 
 //Importing container (stateful) components
 import Home from './containers/Home/Home';
@@ -22,11 +23,15 @@ import Footer from './components/Footer/Footer';
 function App() {
 	const dispatch = useDispatch();
 	const adminStatus = useSelector(state => state.adminStatus);
+	const Pcs = useSelector(state => state.Pcs.data);
+
 
 	useEffect(() => {
 		dispatch(getAdminStatus(localStorage.getItem('adminJwtToken')));
+		dispatch(fetchPcs());
 	}, [])
 
+	console.log(Pcs);
 	console.log(adminStatus)
 
 	const Private = ({ children, ...rest }) => {
