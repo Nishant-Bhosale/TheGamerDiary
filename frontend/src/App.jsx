@@ -66,7 +66,7 @@ function App() {
 						</Private>
 					</Switch>
 				</div>
-				{/* <Footer /> */}
+				<Footer />
 			</Router>
 		</div>
 	);
