@@ -117,10 +117,22 @@ export default function Manage() {
 				</div>
 				<div>Total Time Played: {totalTime} min</div>
 			</div>
-			<input type="date" id="dateInput" onChange={handleDate} />
-			<Button onClick={getDayInfo} className={styles.infoBtn} variant="contained" color="primary">
-				Get Info
+
+			<Button
+				variant="contained"
+				startIcon={<Logout />}
+				className={styles.logoutBtn}
+				onClick={handleLogout}
+			>
+				logout
 			</Button>
+			<h1 style={{ color: 'antiquewhite' }}>Get Gamers of A Specific Date</h1>
+			<div className={styles.dateInputWrapper}>
+				<input type="date" id="dateInput" onChange={handleDate} />
+				<button onClick={getDayInfo} className={styles.infoBtn}>
+					Get Info
+				</button>
+			</div>
 			{anotherDateGamers.length > 0 ? (
 				anotherDateGamers.map((gamer) => {
 					return (
