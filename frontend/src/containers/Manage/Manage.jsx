@@ -17,7 +17,7 @@ export default function Manage() {
 		},
 	};
 	useEffect(() => {
-		axios.post('/gamers', { date: '2021-10-09' }, config).then((res) => {
+		axios.post('/gamers', { date: '10/09/2021' }, config).then((res) => {
 			console.log(res.data);
 		});
 	}, []);
