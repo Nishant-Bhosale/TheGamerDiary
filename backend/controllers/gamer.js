@@ -7,7 +7,7 @@ const addGamer = asyncHandler(async (req, res) => {
 	const { name, money, amountOfTime, pcId, gamerId } = req.body;
 	const gamer = await Gamer.findOne({ _id: gamerId });
 
-	if (gamer && gamer.createdOn === moment().format('L')) {
+	if (gamer && gamer.createdOn === moment().format('DD/MM/YYYY')) {
 		//Conditional will execute if gamerId is sent
 		gamer.endTime += amountOfTime * 60 * 1000;
 		gamer.totalMoneyPaid += money;
@@ -31,7 +31,7 @@ const addGamer = asyncHandler(async (req, res) => {
 			isPlaying: true,
 			totalMoneyPaid: money,
 			totalTime: amountOfTime,
-			createdOn: moment().format('L'),
+			createdOn: moment().format('DD/MM/YYYY')
 		});
 
 		const pc = await PC.findOne({ pcNumber: pcId });
