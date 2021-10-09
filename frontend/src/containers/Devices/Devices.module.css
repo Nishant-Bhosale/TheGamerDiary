@@ -8,9 +8,10 @@
     align-items: center;
     justify-content: center;
     grid-gap: 70px;
+    border-radius: 10px;
     grid-auto-flow: dense;
     grid-auto-rows: 350px;
-    background-color: #eeeef1;
+    background: linear-gradient(to bottom, #3c3e3f,#404753);
 }
 /* Available Device section */
 #deviceEntry{
@@ -20,8 +21,9 @@
     height: 100%;
     padding: 10px;
     border: 3px solid transparent;
+    border-radius: 20px;
     transition: all 200ms linear;
-    background-color: #7289da;
+    background-color: #fafafd;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     display: flex;
@@ -30,41 +32,55 @@
     justify-content: space-evenly;
 }
 #deviceEntry:hover{
-    border-color: #fa0000;
+    border: 6px solid blue;
 }
 
-#deviceEntry span{
+#pcInfo span,#selectedInfo span{
     font-size: 1.2em;
     font-weight: 600;
+    text-align: center;
+    color: white;
 }
 #pcInfo, #selectedInfo{
-    background-color: orange;
-    width: 100%;
-    height: 15%;
+    background-color: rgb(15, 15, 15);
+    width: 80%;
+    height: 18%;
     display: flex;
+    border-radius: 20px;
     flex-direction: column;
     justify-content: space-between;
 }
-#deviceOptions, #options{
+
+#deviceOptions{
     width: 100%;
     display: flex;
+    border-radius: 5px;
     align-items: center;
     justify-content: space-evenly;
-    background-color: red;
+    color: white;
+    background-color: rgb(222, 221, 236);
+}
+#deviceOptions TextFeild:hover{
+    color: white;
+    background-color: white;
+}
+#options{
+    padding: 2px;
+    margin: 2px;
 }
 #submitContainer{
-    width: 100%;
+    width: 40%;
+    height: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: greenyellow;
 }
 #confirmContainer, #sumbitOptions{
-    width: 100%;
-    background-color: yellow;
+    width: 40%;
+    background-color: rgb(248, 248, 242);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 /* Active Device section */

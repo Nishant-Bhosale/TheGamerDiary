@@ -133,7 +133,7 @@ export default function Device({ device }) {
                     noValidate
                     autoComplete="off"
                 >
-                    <TextField className={styles.sessionInput} type="text" name="name" onChange={handleName} value={session.name || ''} label="Session Name" />
+                    <TextField className={styles.sessionInput} type="text" name="name" onChange={handleName} value={session.name || ''} label="Gamer Name" />
                 </Box>
                 <FormControl style={{ minWidth: '120px' }} disabled={showConfirm ? true : false}>
                     <InputLabel id="gameSelected">Select Game</InputLabel>
@@ -169,10 +169,10 @@ export default function Device({ device }) {
             {showConfirm && <div id={styles.submitContainer}>
                 <span>Procceed payment of &#8377;{session.amount} for {setSession.duration} minutes? </span>
                 <div id={styles.sumbitOptions}>
-                    <Button style={{ width: '40%' }} variant="contained" color="primary" startIcon={<Cancel />} onClick={handleCancel}>
+                    <Button  style={{ width: '40%' }} variant="contained" color="primary" startIcon={<Cancel />} onClick={handleCancel}>
                         Cancel
                     </Button>
-                    <Button style={{ width: '40%' }} variant="contained" color="primary" startIcon={<Send />} onClick={handleSelectDevice} >
+                    <Button  style={{ width: '40%' }} variant="contained" color="primary" startIcon={<Send />} onClick={handleSelectDevice} >
                         Submit
                     </Button>
                 </div>
