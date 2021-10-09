@@ -3,7 +3,7 @@ const PC = require("../models/PC");
 
 const getPC = asyncHandler(async (req, res) => {
 	const PCs = await PC.find()
-		.populate("currentGamer", ["endTime", "name", "startTime"])
+		.populate("currentGamer", ["endTime", "name", "startTime", "selectedGame"])
 		.sort({ pcNumber: 1 })
 		.exec()
 

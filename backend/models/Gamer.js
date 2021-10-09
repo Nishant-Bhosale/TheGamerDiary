@@ -27,6 +27,9 @@ const GamerSchema = new Schema(
 		isPlaying: {
 			type: Boolean,
 		},
+		selectedGame: {
+			type: Object,
+		}
 	},
 	{
 		timestamps: true,

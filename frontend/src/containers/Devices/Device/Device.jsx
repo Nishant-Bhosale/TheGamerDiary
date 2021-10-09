@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from '../Devices.module.css';
 import axios from 'axios';
 
@@ -7,32 +7,20 @@ import { useDispatch } from 'react-redux';
 import { fetchPcs } from '../deviceSlice';
 
 //MUI specific
-import { Fab, Button } from '@mui/material';
-import { Add, Remove, Send } from '@mui/icons-material';
+import { FormControl, InputLabel, Select, MenuItem, Fab, Button, TextField, Box } from '@mui/material';
+import { Add, Remove, Receipt, Cancel, Send } from '@mui/icons-material';
 
 //Info Alert
 import AlertUtil from '../../../utils/AlertUtil';
 export default function Device({ device }) {
     const dispatch = useDispatch();
 
-    const [session, setSession] = useState({ duration: 0, amount: 0 });
+    const [session, setSession] = useState({ duration: 0, amount: 0, game: 'GTA V', cf: 1 });
 
     const [response, setResponse] = useState({});
     const [open, setOpen] = useState(false);
 
-    //Handling Responses for selecting session
-    const handleResponse = ({ gamer }) => {
-        console.log(gamer._id)
-        localStorage.setItem('gamerId', gamer._id);
-        setResponse(prev => ({
-            ...prev,
-            message: 'PC selected succesfully',
-            operation: 'success'
-        }));
-        setOpen(true);
-        dispatch(fetchPcs());
-    }
-
+    //Handling Errors for selecting session
     const handleError = () => {
         setResponse(prev => ({
             ...prev,
@@ -50,18 +38,18 @@ export default function Device({ device }) {
                     const response = await axios({
                         method: 'POST',
                         url: '/gamer',
-                        data: { name: session.name, money: session.amount, amountOfTime: session.duration, pcId: device.pcNumber }
+                        data: { name: session.name, selectedGame: { game: session.game, cf: session.cf }, money: session.amount, amountOfTime: session.duration, pcId: device.pcNumber }
                     })
-                    handleResponse(response.data)
+                    localStorage.setItem('gamerId', response.data.gamer._id);
+                    dispatch(fetchPcs());
 
                 }
                 catch (err) {
-                    console.log(err)
                     handleError(err.response)
                 }
             }
             selectDevice();
-            setSession({ duration: 0, amount: 0 })
+            setSession({ duration: 0, amount: 0, game: 'GTA V', cf: 1 })
         }
         else {
             setResponse((prev) => ({
@@ -78,14 +66,14 @@ export default function Device({ device }) {
         setSession(prev => ({
             ...prev,
             duration: session.duration += 30,
-            amount: session.amount += 25
+            amount: session.amount += (session.cf * 25)
         }))
     }
     const handleSubstractClick = () => {
         setSession(prev => ({
             ...prev,
             duration: session.duration -= 30,
-            amount: session.amount -= 25
+            amount: session.amount -= (session.cf * 25)
         }))
     }
 
@@ -96,41 +84,99 @@ export default function Device({ device }) {
         }))
     }
 
+    const handleGameChange = ({ target }) => {
+        let cf = 0;
+        if (target.value == 'GTA V' || target.value == 'Control') {
+            cf = 1;
+        }
+        else if (target.value == 'Cyberpunk 2077' || target.value == 'Minecraft') {
+            cf = 2;
+        }
+        else if (target.value == 'Red Dead Redemption 2') {
+            cf = 3;
+        }
+        setSession(prev => ({
+            ...prev,
+            game: target.value,
+            cf: cf,
+            amount: 0,
+            duration: 0
+        }))
+    }
+
+    const [showConfirm, setShowConfirm] = useState(false);
+    const handleCancel = () => {
+        setShowConfirm(false);
+        setSession({ duration: 0, amount: 0, game: 'GTA V', cf: 1 });
+    }
+
     const changeOpen = () => setOpen(false);
 
     return (
         <div id={styles.deviceEntry}>
             <AlertUtil message={response.message} type={response.operation} open={open} changeOpen={changeOpen} />
-            <div id={styles.generalInfo}>
-                <div id={styles.pcInfo}>
-                    <span>PC {device.pcNumber}</span>
-                    <span>Availabe</span>
-                </div>
+            <div id={styles.pcInfo}>
+                <span>PC {device.pcNumber}</span>
+                <span>Availabe</span>
             </div>
             < div id={styles.selectedInfo}>
                 <span>Time Selected: {session.duration} mins</span>
-                <span>Amount To Be Paid: &#8377;{session.amount}</span>
+                <span>Amount to be paid: &#8377;{session.amount}</span>
             </div>
 
             <div id={styles.deviceOptions}>
-                <div id={styles.inputContainer}>
-                    <input className={styles.sessionInput} type="text" name="name" onChange={handleName} value={session.name || ''} placeholder="Enter Session Name" />
-                </div>
-                <div id={styles.options}>
+                <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '20ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <TextField className={styles.sessionInput} type="text" name="name" onChange={handleName} value={session.name || ''} label="Session Name" />
+                </Box>
+                <FormControl style={{ minWidth: '120px' }} disabled={showConfirm ? true : false}>
+                    <InputLabel id="gameSelected">Select Game</InputLabel>
+                    <Select
+                        labelId="gameSelected"
+                        label="gameSelected"
+                        value={session.game}
+                        onChange={handleGameChange}
+                    >
+                        <MenuItem value={'GTA V'}>GTA V</MenuItem>
+                        <MenuItem value={'Cyberpunk 2077'}>Cyberpunk 2077</MenuItem>
+                        <MenuItem value={'Red Dead Redemption 2'}>Red Dead Redemption 2</MenuItem>
+                        <MenuItem value={'Control'}>Control</MenuItem>
+                        <MenuItem value={'Minecraft'}>Minecraft</MenuItem>
+                    </Select>
+                </FormControl>
+            </div >
+            <div id={styles.options}>
 
-                    <Fab color="primary" aria-label="add" onClick={handleAddClick} disabled={session.duration >= 360 ? true : false}>
-                        <Add />
-                    </Fab>
-                    <Fab color="primary" aria-label="remove" onClick={handleSubstractClick} disabled={session.duration ? false : true}>
-                        <Remove />
-                    </Fab>
-                </div>
+                <Fab color="primary" aria-label="add" onClick={handleAddClick} disabled={session.duration >= 360 || showConfirm ? true : false}>
+                    <Add />
+                </Fab>
+                <Fab color="primary" aria-label="remove" onClick={handleSubstractClick} disabled={!session.duration || showConfirm ? true : false}>
+                    <Remove />
+                </Fab>
             </div>
-            <div id={styles.sumbit}>
-                <Button variant="contained" color="primary" startIcon={<Send />} onClick={handleSelectDevice} disabled={session.duration ? false : true}>
-                    Submit
+            {!showConfirm && <div id={styles.confirmContainer}>
+                <Button style={{ width: '80%' }} variant="contained" color="primary" startIcon={<Receipt />} onClick={() => setShowConfirm(true)} disabled={session.duration ? false : true}>
+                    Confirm
                 </Button>
-            </div>
+            </div>}
+
+            {showConfirm && <div id={styles.submitContainer}>
+                <span>Procceed payment of &#8377;{session.amount} for {setSession.duration} minutes? </span>
+                <div id={styles.sumbitOptions}>
+                    <Button style={{ width: '40%' }} variant="contained" color="primary" startIcon={<Cancel />} onClick={handleCancel}>
+                        Cancel
+                    </Button>
+                    <Button style={{ width: '40%' }} variant="contained" color="primary" startIcon={<Send />} onClick={handleSelectDevice} >
+                        Submit
+                    </Button>
+                </div>
+            </div>}
         </div >
     )
 }

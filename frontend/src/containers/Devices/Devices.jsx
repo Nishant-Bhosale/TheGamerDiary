@@ -11,6 +11,8 @@ export default function Devices() {
 	let userDevice = null;
 
 	const activeDevices = devices.filter((device) => device.isOccupied === true);
+	const freeDevices = devices.filter(device => device.isOccupied === false);
+
 	activeDevices.map((device, index) => {
 		if (device.currentGamer._id === localStorage.getItem('gamerId')) {
 			userDevice = activeDevices[index];
@@ -21,7 +23,7 @@ export default function Devices() {
 	} else {
 		return (
 			<div id={styles.devicesContainer}>
-				{devices.map((device, index) => {
+				{freeDevices.map((device, index) => {
 					return <Device key={index} device={device} />;
 				})}
 			</div>

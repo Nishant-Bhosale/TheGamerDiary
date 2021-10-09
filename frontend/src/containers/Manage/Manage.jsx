@@ -15,7 +15,6 @@ export default function Manage() {
         localStorage.removeItem('adminJwtToken');
         dispatch(adminLogout());
         history.push('/');
-
     }
 
     return (

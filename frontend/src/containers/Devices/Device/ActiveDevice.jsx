@@ -13,6 +13,7 @@ import { Add, Remove, Edit, Save } from '@mui/icons-material';
 import AlertUtil from '../../../utils/AlertUtil';
 
 export default function ActiveDevice({ userDevice }) {
+    const currentGamer = userDevice.currentGamer;
     const dispatch = useDispatch();
 
     const [session, setSession] = useState({ duration: 0, amount: 0 });
@@ -20,7 +21,7 @@ export default function ActiveDevice({ userDevice }) {
     const [msCount, setMsCount] = useState(0);
     // Handling dynamic timer
     useEffect(() => {
-        const timeLeft = (userDevice.currentGamer.endTime - Date.now());
+        const timeLeft = (currentGamer.endTime - Date.now());
         setMsCount(timeLeft);
     }, [])
 
@@ -43,7 +44,17 @@ export default function ActiveDevice({ userDevice }) {
         if (msCount < 0) {
             handleDeleteSession();
             localStorage.removeItem('gamerId');
-        } else {
+        }
+        else if (msCount && (msCount < 300000)) {
+            setResponse(prev => ({
+                ...prev,
+                message: 'Session ends in five minutes',
+                operation: 'info'
+            }))
+            setOpen(true);
+            setOpen(true);
+        }
+        else {
             const interval = setInterval(dynamicTimer, 1000);
             setCounter(msToTime(msCount));
             return () => {
@@ -58,15 +69,15 @@ export default function ActiveDevice({ userDevice }) {
         setSession(prev => ({
             ...prev,
             duration: session.duration += 30,
-            amount: session.amount += 25
+            amount: session.amount += (currentGamer.selectedGame.cf * 25)
         }))
     }
     const handleSubstractClick = () => {
         setSession(prev => ({
             ...prev,
             duration: session.duration -= 30,
-            amount: session.amount -= 25
-        }))
+            amount: session.amount -= (currentGamer.selectedGame.cf * 25)
+        }));
     }
 
 
@@ -111,7 +122,7 @@ export default function ActiveDevice({ userDevice }) {
             try {
                 const response = await axios({
                     method: 'DELETE',
-                    url: `/gamer/${userDevice.currentGamer._id}`,
+                    url: `/gamer/${currentGamer._id}`,
                 })
                 handleDeleteResponse(response.data);
                 dispatch(fetchPcs());
@@ -130,7 +141,7 @@ export default function ActiveDevice({ userDevice }) {
                 const response = await axios({
                     method: 'POST',
                     url: '/gamer',
-                    data: { gamerId: userDevice.currentGamer._id, money: session.amount, amountOfTime: session.duration, pcId: userDevice.pcNumber }
+                    data: { gamerId: currentGamer._id, money: session.amount, amountOfTime: session.duration, pcId: userDevice.pcNumber }
                 })
                 handleResponse(response.data)
 
@@ -150,40 +161,41 @@ export default function ActiveDevice({ userDevice }) {
     }
     const changeOpen = () => setOpen(false);
     return (
-        <div id={styles.userDeviceContainer}>
+        <div id={styles.userDevice}>
             <AlertUtil message={response.message} type={response.operation} open={open} changeOpen={changeOpen} />
-
-            <div id={styles.userDevice}>
-                <div id={styles.username}>
-                    <span>Session Name: {userDevice.currentGamer.name}</span>
-                    <span>Session ID: {userDevice.currentGamer._id}</span>
-                </div>
-                <div id={styles.countdownTimer}>
-                    <span>{counter}</span>
-                </div>
-                {edit && < div id={styles.updatedInfo}>
-                    <span>Add Time: {session.duration} mins</span>
-                    <span>Amount To Be Paid: &#8377;{session.amount}</span>
-                </div>}
-
-                {edit && <div id={styles.userOptions}>
-                    <Fab color="primary" aria-label="add" onClick={handleAddClick} disabled={session.duration >= 360 ? true : false}>
-                        <Add />
-                    </Fab>
-                    <Fab color="primary" aria-label="remove" onClick={handleSubstractClick} disabled={session.duration ? false : true}>
-                        <Remove />
-                    </Fab>
-                </div>}
-                <div id={styles.userActions}>
-                    <Button variant="contained" color={edit ? "warning" : "primary"} startIcon={<Edit />} onClick={handleEditClick}>
-                        Edit
-                    </Button>
-                    <Button variant="contained" color="primary" startIcon={<Save />} onClick={handleUpdateUser} disabled={session.duration ? false : true}>
-                        Update
-                    </Button>
-                </div>
-
+            <div id={styles.userInfo}>
+                <span>Session Name: {currentGamer.name}</span>
+                <span>Session ID: {currentGamer._id}</span>
             </div>
+            <div id={styles.selectedGame}>
+                <span>Game Selected: {currentGamer.selectedGame.game}</span>
+            </div>
+            <div id={styles.countdownTimer}>
+                <span>Timer</span>
+                <span>{counter}</span>
+            </div>
+            {edit && < div id={styles.updatedInfo}>
+                <span>Add time: {session.duration} mins</span>
+                <span>Amount to be paid: &#8377;{session.amount}</span>
+            </div>}
+
+            {edit && <div id={styles.userOptions}>
+                <Fab color="primary" aria-label="add" onClick={handleAddClick} disabled={session.duration >= 360 ? true : false}>
+                    <Add />
+                </Fab>
+                <Fab color="primary" aria-label="remove" onClick={handleSubstractClick} disabled={session.duration ? false : true}>
+                    <Remove />
+                </Fab>
+            </div>}
+            <div id={styles.userActions}>
+                <Button style={{ width: '40%' }} variant="outlined" color={edit ? "warning" : "primary"} startIcon={<Edit />} onClick={handleEditClick}>
+                    Edit
+                </Button>
+                <Button style={{ width: '40%' }} variant="outlined" color="primary" startIcon={<Save />} onClick={handleUpdateUser} disabled={session.duration ? false : true}>
+                    Update
+                </Button>
+            </div>
+
         </div>
     )
 }

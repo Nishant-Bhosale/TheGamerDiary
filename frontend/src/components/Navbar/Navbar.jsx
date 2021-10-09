@@ -10,7 +10,7 @@ export default function Navbar() {
             <div id={styles.navMeta}>
                 <Link className={styles.homeLink} to="/">
                     <div id={styles.logoContainer}>
-                        <span>Logverse</span>
+                        <span>Gamer Diary</span>
                     </div>
                 </Link>
             </div>
