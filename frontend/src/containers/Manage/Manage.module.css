@@ -2,11 +2,21 @@
 	margin: auto;
 	text-align: center;
 	background-color: black;
+	height: 100vh;
 }
 
 .adminWrapper > h1 {
 	padding: 1rem;
 	color: antiquewhite;
+}
+
+.dateInputWrapper {
+	margin: 1rem auto;
+	display: flex;
+	width: 60%;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
 }
 
 .infoBtn {

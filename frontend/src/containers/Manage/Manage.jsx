@@ -116,10 +116,13 @@ export default function Manage() {
 			>
 				logout
 			</Button>
-			<input type="date" id="dateInput" onChange={handleDate} />
-			<button onClick={getDayInfo} className={styles.infoBtn}>
-				Get Info
-			</button>
+			<h1 style={{ color: 'antiquewhite' }}>Get Gamers of A Specific Date</h1>
+			<div className={styles.dateInputWrapper}>
+				<input type="date" id="dateInput" onChange={handleDate} />
+				<button onClick={getDayInfo} className={styles.infoBtn}>
+					Get Info
+				</button>
+			</div>
 			{anotherDateGamers.length > 0 ? (
 				anotherDateGamers.map((gamer) => {
 					return (
