@@ -5,14 +5,13 @@ import Gamer from '../../components/Gamer/Gamer';
 import axios from 'axios';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, CircularProgress } from '@mui/material';
 import { CloudDownload, Remove } from '@mui/icons-material';
 //Handling dynamic date
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { DatePicker, LocalizationProvider } from '@mui/lab';
 import { Logout } from '@mui/icons-material';
 import { adminLogout } from '../Admin/adminSlice';
-
 //importing Alert component
 import AlertUtil from '../../utils/AlertUtil';
 
@@ -42,7 +41,13 @@ export default function Manage() {
 	//For handling fetch specific date error
 	const [specifcFetchOpen, setSpecificFetchOpen] = useState(false);
 
+	//Handling fetch loading
+	const [loading, setLoading] = useState(false);
+	//Handling dynamic fetch loading
+	const [specificDateLoading, setSpecificDateLoading] = useState(false);
+
 	useEffect(() => {
+		setLoading(true);
 		axios
 			.post(
 				'/gamers',
@@ -60,9 +65,9 @@ export default function Manage() {
 					money += gamer.totalMoneyPaid;
 					time += gamer.totalTime;
 				});
-
 				setTotalMoney(money);
 				setTotalTime(time);
+				setLoading(false);
 			})
 			.catch(() => {
 				setResponse(prev => ({
@@ -71,6 +76,7 @@ export default function Manage() {
 					operation: 'warning'
 				}))
 				setOpen(true);
+				setLoading(false);
 			});
 	}, []);
 
@@ -90,12 +96,13 @@ export default function Manage() {
 	const getDayInfo = (e) => {
 		e.preventDefault();
 		if (date !== null) {
+			setSpecificDateLoading(true);
 			axios
 				.post('/gamers', { date }, config)
 				.then((response) => {
 					if (response.data.gamers !== undefined) {
 						setspecificDayGamers(response.data.gamers);
-
+						setSpecificDateLoading(false);
 						let money = 0;
 						let time = 0;
 
@@ -115,6 +122,7 @@ export default function Manage() {
 							operation: 'info'
 						}))
 						setSpecificFetchOpen(true);
+						setSpecificDateLoading(false);
 					}
 				})
 				.catch(() => {
@@ -124,6 +132,7 @@ export default function Manage() {
 						operation: 'warning'
 					}))
 					setSpecificFetchOpen(true);
+					setSpecificDateLoading(false);
 				});
 		} else {
 			setResponse(prev => ({
@@ -161,7 +170,8 @@ export default function Manage() {
 				</Button>
 			</div>
 			<AlertUtil className={styles.adminAlert} message={response.message} type={response.operation} open={open} changeOpen={changeOpen} />
-			<div className={styles.dayInfo}>
+			{loading && <div className={styles.adminLoadingContainer}><CircularProgress /></div>}
+			{(gamers.length !== 0 && !loading) && <div className={styles.dayInfo}>
 				<div className={styles.infoDiv}>
 					<span>Total Active users</span>
 					<span>{gamers.length}</span>
@@ -174,14 +184,14 @@ export default function Manage() {
 					<span>Total Time spent</span>
 					<span>{totalTime}</span>
 				</div>
-			</div>
+			</div>}
 
-			<div id={styles.activeUsersContainer}>
+			{(gamers.length != 0 && !loading) && <div id={styles.activeUsersContainer}>
 				{gamers.map((gamer) => {
 					return <Gamer key={gamer._id} gamer={gamer} />;
 				})}
-			</div>
-
+			</div>}
+			{gamers.length == 0 && <span id={styles.fetchHeading}>No record found for today</span>}
 			<span id={styles.fetchHeading}>Fetch Users from a specific date</span>
 			<div className={styles.dateInputWrapper}>
 				<LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -201,8 +211,9 @@ export default function Manage() {
 					Hide Report
 				</Button>
 			</div>
+			{specificDateLoading && <div className={styles.adminLoadingContainer}><CircularProgress /></div>}
 			{
-				specificDayGamers.length > 0 ? (
+				(specificDayGamers.length > 0 && !specificDateLoading) ? (
 					specificDayGamers.map((gamer) => {
 						return <Gamer key={gamer._id} gamer={gamer} />
 					})
@@ -212,7 +223,7 @@ export default function Manage() {
 					</div>
 				)
 			}
-			{specificDayGamers.length !== 0 && <div className={styles.dayInfo}>
+			{(!specificDateLoading && specificDayGamers.length !== 0) && <div className={styles.dayInfo}>
 				<div className={styles.infoDiv}>
 					<span>Total users</span>
 					<span>{specificDayGamers.length}</span>

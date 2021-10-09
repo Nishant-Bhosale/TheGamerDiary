@@ -22,6 +22,12 @@
 	width: 60%;
 	margin: 20px auto;
 }
+.adminLoadingContainer{
+	height: 50vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 #adminMetaContainer{
 	position: relative;
 	background-color: aqua;
