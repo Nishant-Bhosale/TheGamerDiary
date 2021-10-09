@@ -31,12 +31,8 @@ const addGamer = asyncHandler(async (req, res) => {
 			isPlaying: true,
 			totalMoneyPaid: money,
 			totalTime: amountOfTime,
-<<<<<<< HEAD
 			selectedGame: selectedGame,
-			createdOn: moment().format('DD/MM/YYYY')
-=======
 			createdOn: moment().format('MM/DD/YYYY'),
->>>>>>> origin/develop_pranav
 		});
 
 		const pc = await PC.findOne({ pcNumber: pcId });
