@@ -1,11 +1,15 @@
 .gamerWrapper {
-	margin: auto;
+	margin: 0 auto;
 	width: 65%;
-	padding: 1rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	border-radius: 5px;
 	margin-bottom: 1rem;
-	font-size: 1.3rem;
+	padding: 1.2rem;
+	font-size: 1.2rem;
 	background-color: antiquewhite;
+}
+.gamerWrapper span{
+	font-weight: 600;
 }

@@ -1,13 +1,41 @@
-.adminWrapper {
-	margin: auto;
-	text-align: center;
-	background-color: black;
-	height: 100vh;
+#managerHeading, #fetchHeading{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 50px auto;
+	padding: 5px 0;
+    font-size: 2.5em;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+#fetchHeading{
+    width: 50%;
+}
+#managerHeading:hover, #fetchHeading:hover{
+	border: 2px solid #4285F4;
 }
 
-.adminWrapper > h1 {
-	padding: 1rem;
-	color: antiquewhite;
+.adminAlertContainer{
+	width: 60%;
+	margin: 20px auto;
+}
+#adminMetaContainer{
+	position: relative;
+	background-color: aqua;
+	height: 25vh;
+	display: flex;
+	align-items: center;
+}
+#adminMetaContainer > Button{
+	background-color: red;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 50px;
+
 }
 
 .dateInputWrapper {
@@ -17,34 +45,39 @@
 	justify-content: space-evenly;
 	align-items: center;
 	padding: 1rem;
+	border-radius: 5px;
 	background-color: aquamarine;
-}
-
-.infoBtn {
-	background-color: #1976d1;
-	color: white;
-	padding: 0;
-	border: none;
-	font-size: 1rem;
-}
-#adminOptions{
-	width: 100%;
-	
-}
-.logoutBtn {
-	position: absolute !important;
-	top: 6rem;
-	left: 83rem;
 }
 
 .dayInfo {
-	margin: auto;
+	background-color: yellow;
 	width: 65%;
 	padding: 1rem;
+	height: 30vh;
+	margin: 0 auto;
+	margin-bottom: 50px;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 1rem;
-	font-size: 1.3rem;
-	background-color: aquamarine;
+	justify-content: space-evenly;
 }
+.infoDiv{
+	width: 25%;
+	height: 80%;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: red;
+}
+.infoDiv span:nth-child(1){
+	font-size: 1.2em;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+.infoDiv span:nth-child(2){
+	font-size: 2.5em;
+	font-weight: 600;
+	color: #388e3c;
+}
+

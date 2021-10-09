@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
-const Gamer = require('../models/Gamer');
-const PC = require('../models/PC');
+const Gamer = require('../models/userProfileModel');
+const PC = require('../models/deviceModel');
 const moment = require('moment');
 
 const addGamer = asyncHandler(async (req, res) => {
