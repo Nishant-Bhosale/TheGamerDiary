@@ -28,9 +28,10 @@
 	height: 100%;
 	padding: 10px;
 	transition: all 200ms linear;
-	background-color: rgb(99, 164, 255);
+	background-color: black;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border: 3px solid transparent;
+	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -46,7 +47,7 @@
 }
 #pcInfo,
 #selectedInfo {
-	background-color: orange;
+	background-color: white;
 	box-sizing: border-box;
 	border-radius: 5px;
 	padding: 10px;
@@ -58,7 +59,7 @@
 }
 #deviceOptions,
 #options {
-	background-color: red;
+	background-color: white;
 	box-sizing: border-box;
 	padding: 5px;
 	border-radius: 5px;
