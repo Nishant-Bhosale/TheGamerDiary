@@ -1,0 +1,22 @@
+.adminWrapper {
+	margin: auto;
+	text-align: center;
+	background-color: black;
+}
+
+.adminWrapper > h1 {
+	padding: 1rem;
+	color: antiquewhite;
+}
+
+.infoBtn {
+	background-color: #1976d1;
+	color: white;
+	border: none;
+	font-size: 1rem;
+}
+
+.logoutBtn {
+	top: -9rem;
+	left: 49rem;
+}

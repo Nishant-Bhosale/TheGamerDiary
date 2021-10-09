@@ -1,36 +1,70 @@
-#formContainer{
-    background-color: skyblue;
-    min-height: calc(100vh - 220px);
-    padding: 30px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#loginForm{
-    background-color: yellow;
-    height: 50vh;
-    width: 25%;
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+#formContainer {
+	background-color: whitesmoke;
+	background-position: center;
+	object-fit: cover;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+	padding: 30px 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
-.formHeading{
-    font-size: 1.5em;
-    font-weight: bold;
-    text-transform: uppercase;
+#loginForm {
+	background: cyan;
+	opacity: 0.9;
+	height: 45vh;
+	width: 25%;
+	margin-bottom: 30px;
+	display: block;
+	padding-top: 75px;
+	flex-direction: column;
+	border-radius: 20px;
+	align-items: center;
+	justify-content: space-evenly;
+	border: 2px solid rgb(85, 85, 49);
 }
-input{
-    outline: none;
-    border: none;
-}
-.loginInput{
-    width: 70%;
-    height: 50px;
-    padding-left: 15px;
-    font-size: 18px;
 
+.formHeading {
+	color: black;
+	font-size: 1.5em;
+	font-weight: bold;
+	position: relative;
+	margin-left: 12%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+}
+input {
+	outline: none;
+	border: 2px solid blue;
+	margin: 20px;
+}
+input:hover {
+	color: white;
+	background-color: black;
+}
+.loginInput {
+	width: 70%;
+	height: 50px;
+	padding-left: 15px;
+	margin-left: 12%;
+	font-size: 18px;
+	border-radius: 10px;
+}
+Button {
+	color: black;
+	background: rgb(228, 223, 215);
+	border-radius: 5px;
+	margin: auto;
+	padding: 10px;
+	width: 90px;
+	left: 9rem;
+	height: 35px;
+}
+Button:hover {
+	color: rgb(228, 223, 215);
+	background: black;
 }
