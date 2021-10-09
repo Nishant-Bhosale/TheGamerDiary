@@ -4,7 +4,7 @@ import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-	Redirect
+	Redirect,
 } from 'react-router-dom';
 //Authorising Admin
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,28 +22,32 @@ import Footer from './components/Footer/Footer';
 
 function App() {
 	const dispatch = useDispatch();
-	const adminStatus = useSelector(state => state.adminStatus);
-	const Pcs = useSelector(state => state.Pcs.data);
-
+	const adminStatus = useSelector((state) => state.adminStatus);
+	const Pcs = useSelector((state) => state.Pcs.data);
 
 	useEffect(() => {
 		dispatch(getAdminStatus(localStorage.getItem('adminJwtToken')));
 		dispatch(fetchPcs());
-	}, [])
+	}, []);
 
 	const Private = ({ children, ...rest }) => {
 		return (
-			<Route {...rest} render={() => {
-				return (
-					adminStatus.login ? children : <Redirect to={
-						{
-							pathname: '/admin'
-						}
-					} />
-				)
-			}} />
-		)
-	}
+			<Route
+				{...rest}
+				render={() => {
+					return adminStatus.login ? (
+						children
+					) : (
+						<Redirect
+							to={{
+								pathname: '/admin',
+							}}
+						/>
+					);
+				}}
+			/>
+		);
+	};
 
 	return (
 		<div id={styles.mainContainer}>
@@ -51,18 +55,18 @@ function App() {
 				<Navbar />
 				<div id={styles.contentWrap}>
 					<Switch>
-						<Route exact path='/'>
+						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path='/admin'>
+						<Route exact path="/admin">
 							<Admin />
 						</Route>
-						<Private exact path='/manage'>
+						<Private exact path="/manage">
 							<Manage />
 						</Private>
 					</Switch>
 				</div>
-				<Footer />
+				{/* <Footer /> */}
 			</Router>
 		</div>
 	);
