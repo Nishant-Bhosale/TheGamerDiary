@@ -171,7 +171,7 @@ export default function ActiveDevice({ userDevice }) {
                 <span>Game Selected: {currentGamer.selectedGame.game}</span>
             </div>
             <div id={styles.countdownTimer}>
-                <span>Timer</span>
+                <span>Session ends in</span>
                 <span>{counter}</span>
             </div>
             {edit && < div id={styles.updatedInfo}>

@@ -14,8 +14,7 @@
     margin-left: 20px;
 }
 #socialHandles{
-    width: 30%;
-    background-color: red;
+    width: 15%;
 }
 #socialList{
     list-style: none;
@@ -27,4 +26,14 @@
 .socials{
     text-decoration: none;
     color: white;
+    transition: all 200ms linear;
+}
+#ig:hover{
+    color: #f20089;
+}
+#git:hover{
+    color: #ffff99
+}
+#ln:hover{
+    color: #007dbb
 }

@@ -16,7 +16,10 @@
 	border: none;
 	font-size: 1rem;
 }
-
+#adminOptions{
+	width: 100%;
+	
+}
 .logoutBtn {
 	position: absolute !important;
 	top: 6rem;

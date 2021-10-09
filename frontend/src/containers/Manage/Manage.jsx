@@ -33,7 +33,6 @@ export default function Manage() {
 				config,
 			)
 			.then((res) => {
-				console.log(res.data.gamers);
 				if (res.data.gamers !== undefined) {
 					setGamers(res.data.gamers);
 				}
@@ -98,6 +97,17 @@ export default function Manage() {
 			{gamers.map((gamer) => {
 				return <Gamer key={gamer._id} gamer={gamer} />;
 			})}
+			<div id={styles.adminOptions}>
+				<Button
+					variant="contained"
+					startIcon={<Logout />}
+					className={styles.logoutBtn}
+					onClick={handleLogout}
+				>
+					logout
+				</Button>
+
+			</div>
 
 			<div className={styles.dayInfo}>
 				<h3>Total Gamers Today: {gamers.length}</h3>
@@ -107,19 +117,10 @@ export default function Manage() {
 				</div>
 				<div>Total Time Played: {totalTime} min</div>
 			</div>
-
-			<Button
-				variant="contained"
-				startIcon={<Logout />}
-				className={styles.logoutBtn}
-				onClick={handleLogout}
-			>
-				logout
-			</Button>
 			<input type="date" id="dateInput" onChange={handleDate} />
-			<button onClick={getDayInfo} className={styles.infoBtn}>
+			<Button onClick={getDayInfo} className={styles.infoBtn} variant="contained" color="primary">
 				Get Info
-			</button>
+			</Button>
 			{anotherDateGamers.length > 0 ? (
 				anotherDateGamers.map((gamer) => {
 					return (
