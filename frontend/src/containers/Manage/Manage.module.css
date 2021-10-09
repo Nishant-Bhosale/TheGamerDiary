@@ -12,11 +12,25 @@
 .infoBtn {
 	background-color: #1976d1;
 	color: white;
+	padding: 0;
 	border: none;
 	font-size: 1rem;
 }
 
 .logoutBtn {
-	top: -9rem;
-	left: 49rem;
+	position: absolute !important;
+	top: 6rem;
+	left: 83rem;
+}
+
+.dayInfo {
+	margin: auto;
+	width: 65%;
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	font-size: 1.3rem;
+	background-color: aquamarine;
 }
