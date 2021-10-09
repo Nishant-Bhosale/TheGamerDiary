@@ -13,10 +13,11 @@
 .dateInputWrapper {
 	margin: 1rem auto;
 	display: flex;
-	width: 60%;
-	justify-content: center;
+	width: 65%;
+	justify-content: space-evenly;
 	align-items: center;
 	padding: 1rem;
+	background-color: aquamarine;
 }
 
 .infoBtn {
