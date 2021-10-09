@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const PC = require("../models/PC");
+const PC = require("../models/deviceModel");
 
 const getPC = asyncHandler(async (req, res) => {
 	const PCs = await PC.find()

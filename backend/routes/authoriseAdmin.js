@@ -1,7 +1,7 @@
 const express = require('express');
 //Importing jwt verify middleware
-const verify = require('../middleware/verify')
-const adminAuthorisation = require('../controllers/adminAuthorisation');
+const verify = require('../middleware/verifyMiddleware')
+const adminAuthorisation = require('../controllers/adminAuthHandler');
 
 const authoriseAdmin = express.Router();
 authoriseAdmin.route('/api/authoriseAdmin').get(verify, adminAuthorisation);

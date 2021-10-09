@@ -6,12 +6,9 @@ const Gamer = (props) => {
 
 	return (
 		<div className={styles.gamerWrapper}>
-			<h3>Player Name: {gamer.name}</h3>
-			<div>
-				Total Money Paid: <strong>Rs.</strong>
-				{gamer.totalMoneyPaid}
-			</div>
-			<div>Total Time Played: {gamer.totalTime} min</div>
+			<span>Player Name: {gamer.name}</span>
+			<span>Total Money Paid: &#8377;{gamer.totalMoneyPaid}</span>
+			<span>Total Time Played: {gamer.totalTime} min</span>
 		</div>
 	);
 };

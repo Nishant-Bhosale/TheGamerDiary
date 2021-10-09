@@ -5,9 +5,9 @@ const { errorMiddleware, notFound } = require("./middleware/errorMiddleware");
 const PORT = process.env.PORT;
 
 //Importing Routers
-const gamerRouter = require("./routes/gamer");
-const pcRouter = require("./routes/pc");
-const admin = require("./routes/admin");
+const userRouter = require("./routes/user");
+const deviceRouter = require("./routes/device");
+const adminRouter = require("./routes/admin");
 const authoriseAdmin = require("./routes/authoriseAdmin");
 
 //Initializing connection to the database
@@ -19,9 +19,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(gamerRouter);
-app.use(pcRouter);
-app.use(admin);
+app.use(userRouter);
+app.use(deviceRouter);
+app.use(adminRouter);
 app.use(authoriseAdmin);
 
 //Disabled to get accurate errors
