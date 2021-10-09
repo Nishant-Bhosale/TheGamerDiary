@@ -19,13 +19,13 @@ export default function Manage() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	useEffect(() => {
-		const config = {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		};
+	const config = {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	};
 
+	useEffect(() => {
 		axios
 			.post(
 				'/gamers',
@@ -34,7 +34,9 @@ export default function Manage() {
 			)
 			.then((res) => {
 				console.log(res.data.gamers);
-				setGamers(res.data.gamers);
+				if (res.data.gamers !== undefined) {
+					setGamers(res.data.gamers);
+				}
 				let money = 0;
 				let time = 0;
 
