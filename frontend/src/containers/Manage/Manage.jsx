@@ -5,14 +5,17 @@ import Gamer from '../../components/Gamer/Gamer';
 import axios from 'axios';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { Button } from '@mui/material';
+import { Button, TextField } from '@mui/material';
+import { CloudDownload } from '@mui/icons-material';
+//Handling dynamic date
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import { DatePicker, LocalizationProvider } from '@mui/lab';
 import { Logout } from '@mui/icons-material';
 import { adminLogout } from '../Admin/adminSlice';
 
 export default function Manage() {
 	const [gamers, setGamers] = useState([]);
 	const [anotherDateGamers, setAnotherDateGamers] = useState([]);
-	const [date, setDate] = useState(null);
 	const [text, setText] = useState('');
 	const [totalMoney, setTotalMoney] = useState(0);
 	const [totalTime, setTotalTime] = useState(0);
@@ -33,14 +36,13 @@ export default function Manage() {
 				config,
 			)
 			.then((res) => {
-				console.log(res.data.gamers);
 				if (res.data.gamers !== undefined) {
 					setGamers(res.data.gamers);
 				}
 				let money = 0;
 				let time = 0;
 
-				res.data.gamers.forEach((gamer) => {
+				res.data.gamers.map((gamer) => {
 					money += gamer.totalMoneyPaid;
 					time += gamer.totalTime;
 				});
@@ -59,20 +61,15 @@ export default function Manage() {
 		history.push('/');
 	};
 
-	const handleDate = (e) => {
-		if (e.target.value !== '' || e.target.value !== null) {
-			setDate(moment(e.target.value).format('MM/DD/YYYY'));
+	const [date, setDate] = useState(null);
+	const handleDate = (value) => {
+		if (value !== '' || value !== null) {
+			setDate(moment(value).format('MM/DD/YYYY'));
 		}
 	};
 
 	const getDayInfo = (e) => {
 		e.preventDefault();
-		const config = {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		};
-
 		if (date !== null) {
 			axios
 				.post('/gamers', { date }, config)
@@ -98,6 +95,17 @@ export default function Manage() {
 			{gamers.map((gamer) => {
 				return <Gamer key={gamer._id} gamer={gamer} />;
 			})}
+			<div id={styles.adminOptions}>
+				<Button
+					variant="contained"
+					startIcon={<Logout />}
+					className={styles.logoutBtn}
+					onClick={handleLogout}
+				>
+					logout
+				</Button>
+
+			</div>
 
 			<div className={styles.dayInfo}>
 				<h3>Total Gamers Today: {gamers.length}</h3>
@@ -118,10 +126,19 @@ export default function Manage() {
 			</Button>
 			<h1 style={{ color: 'antiquewhite' }}>Get Gamers of A Specific Date</h1>
 			<div className={styles.dateInputWrapper}>
-				<input type="date" id="dateInput" onChange={handleDate} />
-				<button onClick={getDayInfo} className={styles.infoBtn}>
+				<LocalizationProvider dateAdapter={AdapterDateFns}>
+					<DatePicker
+						label="Select Date"
+						value={date}
+						onChange={(newValue) => {
+							handleDate(newValue);
+						}}
+						renderInput={(params) => <TextField {...params} />}
+					/>
+				</LocalizationProvider>
+				<Button variant="contained" color="primary" startIcon={<CloudDownload />} onClick={getDayInfo} className={styles.infoBtn}>
 					Get Info
-				</button>
+				</Button>
 			</div>
 			{anotherDateGamers.length > 0 ? (
 				anotherDateGamers.map((gamer) => {
