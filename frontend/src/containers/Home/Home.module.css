@@ -1,12 +1,29 @@
-#homeDashboardHeading {
-	width: 30%;
-	height: 70px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-transform: uppercase;
-	letter-spacing: 0.025em;
-	margin: 20px auto;
-	font-size: 2.5em;
-	font-weight: 700;
+#homeDashboardHeading{
+    width: 30%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 50px auto;
+    font-size: 2.5em;
+    font-weight: 700;
 }
+#scrollToPageTop{
+    position: fixed;
+    z-index: 3;
+    top: 85vh;
+    right: 50px;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4285F4;
+    cursor: pointer;
+    transition: all 200ms linear;
+    overflow: hidden;
+}
+
