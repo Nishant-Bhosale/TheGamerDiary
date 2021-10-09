@@ -1,15 +1,15 @@
-const asyncHandler = require("express-async-handler");
-const Gamer = require("../models/Gamer");
-const PC = require("../models/PC");
-const moment = require("moment");
+const asyncHandler = require('express-async-handler');
+const Gamer = require('../models/Gamer');
+const PC = require('../models/PC');
+const moment = require('moment');
 
 const addGamer = asyncHandler(async (req, res) => {
 	const { name, money, amountOfTime, pcId, gamerId } = req.body;
 	const gamer = await Gamer.findOne({ _id: gamerId });
 
-	if (gamer && gamer.createdOn == moment().format('L')) {
+	if (gamer && gamer.createdOn === moment().format('L')) {
 		//Conditional will execute if gamerId is sent
-		gamer.endTime += (amountOfTime * 60 * 1000);
+		gamer.endTime += amountOfTime * 60 * 1000;
 		gamer.totalMoneyPaid += money;
 		gamer.totalTime += amountOfTime;
 
@@ -18,11 +18,11 @@ const addGamer = asyncHandler(async (req, res) => {
 	} else {
 		//Conditional satement executes if Gamer ID is not sent
 		const startTime = Date.now();
-		const endTime = (startTime + (amountOfTime * 60 * 1000));
+		const endTime = startTime + amountOfTime * 60 * 1000;
 
 		if (startTime > endTime) {
 			res.status(400);
-			throw new Error("Invalid time");
+			throw new Error('Invalid time');
 		}
 		const gamer = new Gamer({
 			name,
@@ -31,7 +31,7 @@ const addGamer = asyncHandler(async (req, res) => {
 			isPlaying: true,
 			totalMoneyPaid: money,
 			totalTime: amountOfTime,
-			createdOn: moment().format('L')
+			createdOn: moment().format('L'),
 		});
 
 		const pc = await PC.findOne({ pcNumber: pcId });
@@ -39,7 +39,7 @@ const addGamer = asyncHandler(async (req, res) => {
 		//Again, this can be handled on the frontend
 		if (pc.isOccupied) {
 			res.status(400);
-			throw new Error("PC already occupied");
+			throw new Error('PC already occupied');
 		}
 
 		pc.isOccupied = true;
@@ -56,7 +56,7 @@ const getGamer = asyncHandler(async (req, res) => {
 
 	if (!gamer) {
 		res.status(400);
-		throw new Error("Gamer not found");
+		throw new Error('Gamer not found');
 	}
 
 	res.status(200).json({ gamer });
@@ -71,7 +71,7 @@ const removeGamer = asyncHandler(async (req, res) => {
 
 	if (!pc) {
 		res.status(400);
-		throw new Error("PC not found");
+		throw new Error('PC not found');
 	}
 
 	pc.isOccupied = false;
@@ -89,11 +89,11 @@ const updateGamer = asyncHandler(async (req, res) => {
 
 	if (!gamer) {
 		res.status(400);
-		throw new Error("Gamer not found");
+		throw new Error('Gamer not found');
 	}
 
 	gamer.totalMoneyPaid += money;
-	const updatedTime = moment(gamer.endTime).add(amountOfTime, "m").toDate();
+	const updatedTime = moment(gamer.endTime).add(amountOfTime, 'm').toDate();
 
 	gamer.totalTime += amountOfTime;
 	gamer.endTime = updatedTime;
