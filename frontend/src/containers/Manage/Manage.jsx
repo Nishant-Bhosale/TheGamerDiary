@@ -104,7 +104,6 @@ export default function Manage() {
 				>
 					logout
 				</Button>
-
 			</div>
 
 			<div className={styles.dayInfo}>
@@ -136,7 +135,13 @@ export default function Manage() {
 						renderInput={(params) => <TextField {...params} />}
 					/>
 				</LocalizationProvider>
-				<Button variant="contained" color="primary" startIcon={<CloudDownload />} onClick={getDayInfo} className={styles.infoBtn}>
+				<Button
+					variant="contained"
+					color="primary"
+					startIcon={<CloudDownload />}
+					onClick={getDayInfo}
+					className={styles.infoBtn}
+				>
 					Get Info
 				</Button>
 			</div>

@@ -1,158 +1,161 @@
-#spinnerContainer, #errorId{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#spinnerContainer,
+#errorId {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-#devicesContainer{
-    display: grid;
-    width: 90vw;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    padding: 50px;
-    grid-template: repeat(1, 450px)/repeat(auto-fit, 400px);
-    align-items: center;
-    justify-content: center;
-    grid-gap: 70px;
-    grid-auto-flow: dense;
-    grid-auto-rows: 450px;
-    background-color: #eeeef1;
+#devicesContainer {
+	display: grid;
+	width: 90vw;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	padding: 50px;
+	grid-template: repeat(1, 450px) / repeat(auto-fit, 400px);
+	align-items: center;
+	justify-content: center;
+	grid-gap: 70px;
+	grid-auto-flow: dense;
+	grid-auto-rows: 450px;
+	background-color: #eeeef1;
 }
 /* Available Device section */
-#deviceEntry{
-    position: relative;
-    justify-self: center;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    transition: all 200ms linear;
-    background-color: rgb(99, 164, 255);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border: 3px solid transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+#deviceEntry {
+	position: relative;
+	justify-self: center;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	transition: all 200ms linear;
+	background-color: rgb(99, 164, 255);
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	border: 3px solid transparent;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
 }
-#deviceEntry:hover{
-    border: 3px solid #fa0000;
+#deviceEntry:hover {
+	border: 3px solid #fa0000;
 }
 
-#deviceEntry span{
-    font-size: 1.2em;
-    font-weight: 600;
+#deviceEntry span {
+	font-size: 1.2em;
+	font-weight: 600;
 }
-#pcInfo, #selectedInfo{
-    background-color: orange;
-    box-sizing: border-box;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
-    height: 18%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+#pcInfo,
+#selectedInfo {
+	background-color: orange;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding: 10px;
+	width: 100%;
+	height: 18%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
-#deviceOptions, #options{
-    background-color: red;
-    box-sizing: border-box;
-    padding: 5px;
-    border-radius: 5px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+#deviceOptions,
+#options {
+	background-color: red;
+	box-sizing: border-box;
+	padding: 5px;
+	border-radius: 5px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 }
-#submitContainer{
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: greenyellow;
+#submitContainer {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 5px;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: greenyellow;
 }
-#submitContainer > span{
-    margin-bottom: 5px;
+#submitContainer > span {
+	margin-bottom: 5px;
 }
-#confirmContainer, #sumbitOptions{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+#confirmContainer,
+#sumbitOptions {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
 }
 
 /* Active Device section */
-#userDevice{
-    background-color: yellow;
-    padding: 10px;
-    height: 75vh;
-    width: 40vw;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+#userDevice {
+	background-color: black;
+	padding: 10px;
+	height: 75vh;
+	width: 40vw;
+	margin: 50px auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
-#userDevice span{
-    font-size: 1.4em;
-    letter-spacing: 0.015em;
-    font-weight: 600;
+#userDevice span {
+	font-size: 1.4em;
+	letter-spacing: 0.015em;
+	font-weight: 600;
 }
 
-#userInfo, #updatedInfo{
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: orange;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    height: 18%;
-    justify-content: space-between;
+#userInfo,
+#updatedInfo {
+	box-sizing: border-box;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	height: 18%;
+	justify-content: space-between;
 }
-#selectedGame{
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border-radius: 5px;
-    width: 90%;
-    margin: 0 auto;
-    background-color: orange;
-
+#selectedGame {
+	box-sizing: border-box;
+	padding: 5px 10px;
+	border-radius: 5px;
+	width: 90%;
+	margin: 0 auto;
+	background-color: white;
 }
-#countdownTimer{
-    background-color: skyblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    text-transform: uppercase;
-    width: 90%;
-    height: 30%;
-    border-radius: 5px;
+#countdownTimer {
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	text-transform: uppercase;
+	width: 90%;
+	height: 30%;
+	border-radius: 5px;
 }
-#countdownTimer span:nth-child(1){
-    font-size: 2em;
+#countdownTimer span:nth-child(1) {
+	font-size: 2em;
 }
-#countdownTimer span:nth-child(2){
-    color: red;
-    font-size: 4em;
+#countdownTimer span:nth-child(2) {
+	color: red;
+	font-size: 4em;
 }
-#userOptions{
-    background-color: red;
-    box-sizing: border-box;
-    padding: 5px;
-    border-radius: 5px;
-    width: 50%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-evenly;
+#userOptions {
+	background-color: red;
+	box-sizing: border-box;
+	padding: 5px;
+	border-radius: 5px;
+	width: 50%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-evenly;
 }
-#userActions{
-    width: 80%;
-    display: flex;
-    justify-content: space-evenly;
-
+#userActions {
+	width: 80%;
+	display: flex;
+	justify-content: space-evenly;
 }
