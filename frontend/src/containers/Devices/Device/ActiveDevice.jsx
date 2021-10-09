@@ -16,6 +16,8 @@ export default function ActiveDevice({ userDevice }) {
     const currentGamer = userDevice.currentGamer;
     const dispatch = useDispatch();
 
+    const mediaQuery = window.matchMedia('(max-width: 400px)');
+
     const [session, setSession] = useState({ duration: 0, amount: 0 });
     const [counter, setCounter] = useState("");
     const [msCount, setMsCount] = useState(0);
@@ -165,7 +167,7 @@ export default function ActiveDevice({ userDevice }) {
             <AlertUtil message={response.message} type={response.operation} open={open} changeOpen={changeOpen} />
             <div id={styles.userInfo}>
                 <span>Session Name: {currentGamer.name}</span>
-                <span>Session ID: {currentGamer._id}</span>
+                <span>{!mediaQuery.matches ? "Session ID" : "ID"}: {currentGamer._id}</span>
             </div>
             <div id={styles.selectedGame}>
                 <span>Game Selected: {currentGamer.selectedGame.game}</span>
@@ -188,10 +190,10 @@ export default function ActiveDevice({ userDevice }) {
                 </Fab>
             </div>}
             <div id={styles.userActions}>
-                <Button style={{ width: '40%' }} variant="outlined" color="warning" startIcon={!edit ? <Edit /> : <Cancel />} onClick={handleEditClick}>
+                <Button style={{ width: '40%' }} variant="contained" color="warning" startIcon={!edit ? <Edit /> : <Cancel />} onClick={handleEditClick}>
                     {!edit ? 'Edit' : 'Cancel'}
                 </Button>
-                <Button style={{ width: '40%' }} variant="outlined" color="primary" startIcon={<Save />} onClick={handleUpdateUser} disabled={session.duration ? false : true}>
+                <Button style={{ width: '40%' }} variant="contained" color="primary" startIcon={<Save />} onClick={handleUpdateUser} disabled={session.duration ? false : true}>
                     Update
                 </Button>
             </div>

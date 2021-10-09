@@ -8,8 +8,16 @@
 	margin-bottom: 1rem;
 	padding: 1.2rem;
 	font-size: 1.2rem;
-	background-color: antiquewhite;
+	background-color: #ffe6cc;
 }
 .gamerWrapper span{
 	font-weight: 600;
 }
+
+@media (min-width : 300px) and (max-width: 600px){
+	.gamerWrapper{
+		width: 85%;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+  }

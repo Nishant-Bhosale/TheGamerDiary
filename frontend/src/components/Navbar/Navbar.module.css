@@ -5,9 +5,6 @@
 	height: 80px;
 	width: 100%;
 	color: white;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 }
 
 .homeLink,
@@ -15,22 +12,29 @@
 	text-decoration: none;
 	color: white;
 }
-
-#navMeta, #navListContainer {
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	font-size: 1.5rem;
-	width: 15%;
+#navMeta{
+	font-size: 1.5em;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 50px;
 }
-#navList {
-	list-style: none;
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
+#manage{
+	font-size: 1.5em;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 50px;
 }
 
 .activeLink{
     border-bottom: 2px solid #4285F4;
+}
+@media (min-width : 300px) and (max-width: 600px){
+	#navMeta{
+		left: 20px;
+	}
+	#manage{
+		right: 20px;
+	}
 }

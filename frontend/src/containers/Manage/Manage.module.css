@@ -30,7 +30,6 @@
 }
 #adminMetaContainer{
 	position: relative;
-	background-color: aqua;
 	height: 25vh;
 	display: flex;
 	align-items: center;
@@ -52,11 +51,11 @@
 	align-items: center;
 	padding: 1rem;
 	border-radius: 5px;
-	background-color: aquamarine;
+	background-color: #72efdd;
 }
 
 .dayInfo {
-	background-color: yellow;
+	background-color: #64b5f6;
 	width: 65%;
 	padding: 1rem;
 	height: 30vh;
@@ -74,7 +73,14 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	background-color: red;
+	border: 3px solid transparent;
+	transition: all 200ms linear;
+	cursor: pointer;
+	background-color: #fff;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.infoDiv:hover{
+	border-color: #DB4437;
 }
 .infoDiv span:nth-child(1){
 	font-size: 1.2em;
@@ -87,3 +93,50 @@
 	color: #388e3c;
 }
 
+@media (min-width : 300px) and (max-width: 600px){
+	#managerHeading, #fetchHeading{
+		font-size: 2em;
+		padding: 5px 10px;
+		letter-spacing: inherit;
+		line-height: 1.2em;
+		text-align: center;
+		width: 85%;
+	}
+	.dayInfo{
+		width: 85%;
+		height: 70vh;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+	.infoDiv{
+		width: 90%;
+		height: 30%;
+	}
+	.dateInputWrapper{
+		width: 85%;
+		height: 30vh;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+	.dateInputWrapper > Button{
+		width: 80%;
+	}
+	.adminAlertContainer{
+		width: 85%;
+	}
+	#managerHeading{
+		margin-top: 100px;
+	}
+	#adminMetaContainer > Button{
+		top: 30px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 85%;
+	
+	}
+	#adminMetaContainer{
+		height: 35vh;
+	}
+  }

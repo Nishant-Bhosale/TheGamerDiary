@@ -14,7 +14,7 @@
 #scrollToPageTop{
     position: fixed;
     z-index: 3;
-    top: 85vh;
+    top: 85%;
     right: 50px;
     width: 0;
     height: 0;
@@ -26,4 +26,10 @@
     cursor: pointer;
     transition: all 200ms linear;
     overflow: hidden;
+}
+
+@media (min-width : 300px) and (max-width: 600px){
+  #homeDashboardHeading{
+      width: 80vw;
+  }
 }

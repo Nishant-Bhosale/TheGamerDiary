@@ -14,7 +14,6 @@ import { Add, Remove, Receipt, Cancel, Send } from '@mui/icons-material';
 import AlertUtil from '../../../utils/AlertUtil';
 export default function Device({ device }) {
     const dispatch = useDispatch();
-
     const [session, setSession] = useState({ duration: 0, amount: 0, game: 'GTA V', cf: 1 });
 
     const [response, setResponse] = useState({});

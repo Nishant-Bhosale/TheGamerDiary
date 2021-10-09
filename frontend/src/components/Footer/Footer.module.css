@@ -37,3 +37,10 @@
 #ln:hover{
     color: #007dbb
 }
+
+@media (min-width : 300px) and (max-width: 600px){
+    #socialHandles{
+        width: 40%;
+        margin-right: 15px;
+    }
+}

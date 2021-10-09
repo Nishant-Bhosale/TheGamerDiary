@@ -3,7 +3,7 @@
 	background-position: center;
 	object-fit: cover;
 	background-repeat: no-repeat;
-	min-height: 100vh;
+	min-height: calc(100vh - 160px);
 	padding: 30px 0;
 	display: flex;
 	flex-direction: row;
@@ -20,39 +20,37 @@
 	display: block;
 	padding-top: 75px;
 	flex-direction: column;
-	border-radius: 20px;
 	align-items: center;
 	justify-content: space-evenly;
 	border: 2px solid rgb(85, 85, 49);
 }
 
 .formHeading {
-	color: black;
-	font-size: 1.5em;
-	font-weight: bold;
+	width: 100%;
+	display: flex;
+	font-size: 1.8em;
+	font-weight: 600;
 	position: relative;
-	margin-left: 12%;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
 	text-transform: uppercase;
 }
+
 .loginInput {
 	outline: none;
-	border: 2px solid blue;
+	border: 3px solid black;
 	margin: 20px;
-}
-.loginInput:hover {
-	color: white;
-	background-color: black;
-}
-.loginInput {
 	width: 70%;
 	height: 50px;
 	padding-left: 15px;
 	margin-left: 12%;
 	font-size: 18px;
-	border-radius: 10px;
+	transition: all 200ms linear;
+}
+.loginInput:focus{
+	border-color: #4285F4;
+	border-radius: 40px;
 }
 #loginForm > Button{
 	color: black;
@@ -67,4 +65,11 @@
 #loginForm > Button:hover {
 	color: rgb(228, 223, 215);
 	background: black;
+}
+@media (min-width : 300px) and (max-width: 600px){
+	#loginForm {
+		min-height: 300px;
+		width: 85%;
+	}
+	
 }

@@ -17,26 +17,27 @@
     grid-gap: 70px;
     grid-auto-flow: dense;
     grid-auto-rows: 450px;
-    background-color: #eeeef1;
+    background-color: #2b2d42
 }
 /* Available Device section */
 #deviceEntry{
+    border-radius: 10px;
     position: relative;
     justify-self: center;
     width: 100%;
     height: 100%;
     padding: 10px;
     transition: all 200ms linear;
-    background-color: rgb(99, 164, 255);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #64b5f6;
     border: 3px solid transparent;
+    transform: all 200ms linear;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 }
 #deviceEntry:hover{
-    border: 3px solid #fa0000;
+    border: 3px solid #DB4437;
 }
 
 #deviceEntry span{
@@ -44,7 +45,8 @@
     font-weight: 600;
 }
 #pcInfo, #selectedInfo{
-    background-color: orange;
+    background-color: #222;
+    color: #fff;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 10px;
@@ -55,7 +57,9 @@
     justify-content: space-between;
 }
 #deviceOptions, #options{
-    background-color: red;
+    background-color: #feae96;
+    background-image: linear-gradient(315deg, #feae96 0%, #fe0b44ce 75%);
+    color: #fff;
     box-sizing: border-box;
     padding: 5px;
     border-radius: 5px;
@@ -72,7 +76,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: greenyellow;
+    background-color: #ffc300;
+    
 }
 #submitContainer > span{
     margin-bottom: 5px;
@@ -85,15 +90,21 @@
 
 /* Active Device section */
 #userDevice{
-    background-color: yellow;
+    background-color: #64b5f6;
+    border-radius: 10px;
     padding: 10px;
     height: 75vh;
     width: 40vw;
     margin: 50px auto;
+    border: 3px solid transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 200ms linear;
     justify-content: space-evenly;
+}
+#userDevice:hover{
+    border: 3px solid #DB4437;
 }
 
 #userDevice span{
@@ -106,11 +117,12 @@
     box-sizing: border-box;
     padding: 10px;
     border-radius: 5px;
-    background-color: orange;
+    background-color: #222;
+    color: #fff;
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 18%;
+    height: 15%;
     justify-content: space-between;
 }
 #selectedGame{
@@ -119,11 +131,12 @@
     border-radius: 5px;
     width: 90%;
     margin: 0 auto;
-    background-color: orange;
+    background-color: #222;
+    color: #fff;
 
 }
 #countdownTimer{
-    background-color: skyblue;
+    background-color: #90caf9;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -132,6 +145,7 @@
     width: 90%;
     height: 30%;
     border-radius: 5px;
+    border: 3px solid #4285F4;
 }
 #countdownTimer span:nth-child(1){
     font-size: 2em;
@@ -141,11 +155,11 @@
     font-size: 4em;
 }
 #userOptions{
-    background-color: red;
+    background-image: linear-gradient(315deg, #feae96 0%, #fe0b44ce 75%);
     box-sizing: border-box;
     padding: 5px;
     border-radius: 5px;
-    width: 50%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
@@ -155,4 +169,56 @@
     display: flex;
     justify-content: space-evenly;
 
+}
+/* Handling mobile friendly design */
+@media (min-width : 300px) and (max-width: 600px){
+    #devicesContainer{
+        width: 85vw;
+        padding: 50px 20px;
+        grid-template: repeat(1, 550px)/repeat(auto-fit, 400px);
+        grid-auto-rows: 550px;
+    }
+    #deviceEntry{
+        width: 75%;
+        padding: 5px;
+    }
+    #pcInfo, #selectedInfo{
+        height: 15%;
+    }
+    #deviceOptions{
+        flex-direction: column;
+        height: 170px;
+
+    }
+
+    /* Handling active device */
+    #userDevice{
+        height: 85vh;
+        width: 90vw;
+        padding: 5px;
+    }
+    #userDevice span{
+        font-size: 1.25em;
+        letter-spacing: initial;
+    }
+    #userInfo, #updatedInfo{
+        box-sizing: content-box;
+        justify-content: space-around;
+        width: 95%;
+        height: 15%;
+        padding: 5px;
+    }
+    #countdownTimer{
+        padding: 0 2px;
+        width: 95%;
+    }
+    #userOptions{
+        width: 95%;
+        box-sizing: content-box;
+    }
+    #selectedGame{
+        box-sizing: content-box;
+        width: 95%;
+        padding: 5px;
+    }
 }

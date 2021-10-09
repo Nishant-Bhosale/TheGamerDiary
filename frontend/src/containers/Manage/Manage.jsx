@@ -55,13 +55,13 @@ export default function Manage() {
 				config,
 			)
 			.then((res) => {
-				if (res.data.gamers !== undefined) {
+				if (res.data.gamers && res.data.gamers.length !== 0) {
 					setGamers(res.data.gamers);
 				}
 				let money = 0;
 				let time = 0;
 
-				res.data.gamers.map((gamer) => {
+				gamers.map((gamer) => {
 					money += gamer.totalMoneyPaid;
 					time += gamer.totalTime;
 				});
@@ -69,7 +69,8 @@ export default function Manage() {
 				setTotalTime(time);
 				setLoading(false);
 			})
-			.catch(() => {
+			.catch((err) => {
+				console.log(err)
 				setResponse(prev => ({
 					...prev,
 					message: 'Failed to fetch users',
@@ -234,7 +235,7 @@ export default function Manage() {
 				</div>
 				<div className={styles.infoDiv}>
 					<span>Total Time spent</span>
-					<span>{specificTotalTime}</span>
+					<span>{specificTotalTime} min</span>
 				</div>
 			</div>}
 		</div >

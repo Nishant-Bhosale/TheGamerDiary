@@ -12,18 +12,14 @@ export default function Navbar() {
 					</div>
 				</Link>
 			</div>
-			<div id={styles.navListContainer}>
-				<ul id={styles.navList}>
-					<li className={styles.navLi}>
-						<NavLink
-							className={styles.navLink}
-							activeClassName={styles.activeLink}
-							to="/manage"
-						>
-							Manage
-						</NavLink>
-					</li>
-				</ul>
+			<div id={styles.manage}>
+				<NavLink
+					className={styles.navLink}
+					activeClassName={styles.activeLink}
+					to="/manage"
+				>
+					Manage
+				</NavLink>
 			</div>
 		</div>
 	);
