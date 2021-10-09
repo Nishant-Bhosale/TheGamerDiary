@@ -11,3 +11,19 @@
     font-weight: 700;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
+#scrollToPageTop{
+    position: fixed;
+    z-index: 3;
+    top: 85vh;
+    right: 50px;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4285F4;
+    cursor: pointer;
+    transition: all 200ms linear;
+    overflow: hidden;
+}
