@@ -5,7 +5,7 @@ const {
 	updateGamer,
 	removeGamer,
 	getGamersOfASpecificDate,
-} = require('../controllers/gamer');
+} = require('../controllers/userHandler');
 const router = express.Router();
 
 router.route('/gamer').post(addGamer);
