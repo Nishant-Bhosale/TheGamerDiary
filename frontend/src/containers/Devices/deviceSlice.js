@@ -11,7 +11,8 @@ export const fetchPcs = createAsyncThunk(
 const Pcs = createSlice({
     name: 'Pcs',
     initialState: {
-        data: []
+        data: [],
+        hasFetched: false
     },
     extraReducers: {
         [fetchPcs.pending]: (state, action) => {

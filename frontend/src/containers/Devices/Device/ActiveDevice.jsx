@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { fetchPcs } from '../deviceSlice';
 
 import { Fab, Button } from '@mui/material';
-import { Add, Remove, Edit, Save } from '@mui/icons-material';
+import { Add, Remove, Edit, Cancel, Save } from '@mui/icons-material';
 
 //Info Alert
 import AlertUtil from '../../../utils/AlertUtil';
@@ -89,12 +89,12 @@ export default function ActiveDevice({ userDevice }) {
         localStorage.setItem('gamerId', gamer._id);
         setResponse(prev => ({
             ...prev,
-            message: 'Selection updated succesfully',
-            operation: 'success'
-        }));
-        setMsCount(prev => prev += (session.duration * 60 * 1000));
+            message: 'Updating selection',
+            operation: 'info'
+        }))
         setOpen(true);
-        dispatch(fetchPcs());
+        setTimeout(() => dispatch(fetchPcs()), 2000);
+
     }
 
     const handleError = () => {
@@ -114,6 +114,7 @@ export default function ActiveDevice({ userDevice }) {
             operaton: 'success'
         }))
         setOpen(true);
+        setTimeout(() => dispatch(fetchPcs()), 2000);
     }
 
     //Handling Remove user
@@ -125,7 +126,6 @@ export default function ActiveDevice({ userDevice }) {
                     url: `/gamer/${currentGamer._id}`,
                 })
                 handleDeleteResponse(response.data);
-                dispatch(fetchPcs());
             }
             catch (err) {
                 handleError(err)
@@ -188,8 +188,8 @@ export default function ActiveDevice({ userDevice }) {
                 </Fab>
             </div>}
             <div id={styles.userActions}>
-                <Button style={{ width: '40%' }} variant="outlined" color={edit ? "warning" : "primary"} startIcon={<Edit />} onClick={handleEditClick}>
-                    Edit
+                <Button style={{ width: '40%' }} variant="outlined" color="warning" startIcon={!edit ? <Edit /> : <Cancel />} onClick={handleEditClick}>
+                    {!edit ? 'Edit' : 'Cancel'}
                 </Button>
                 <Button style={{ width: '40%' }} variant="outlined" color="primary" startIcon={<Save />} onClick={handleUpdateUser} disabled={session.duration ? false : true}>
                     Update

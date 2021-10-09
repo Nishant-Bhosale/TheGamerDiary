@@ -12,27 +12,6 @@ export default function Navbar() {
 					</div>
 				</Link>
 			</div>
-
-<<<<<<< HEAD
-    return (
-        <div id={styles.navbarContainer}>
-            <div id={styles.navMeta}>
-                <Link className={styles.homeLink} to="/">
-                    <div id={styles.logoContainer}>
-                        <span>Gamer Diary</span>
-                    </div>
-                </Link>
-            </div>
-
-            <div id={styles.navListContainer}>
-                <ul id={styles.navList}>
-                    <li className={styles.navLi}><NavLink className={styles.navLink} activeClassName={styles.activeLink} to='/manage'>Manage</NavLink></li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-=======
 			<div id={styles.navListContainer}>
 				<ul id={styles.navList}>
 					<li className={styles.navLi}>
@@ -49,4 +28,3 @@ export default function Navbar() {
 		</div>
 	);
 }
->>>>>>> origin/develop_pranav

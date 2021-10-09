@@ -32,7 +32,6 @@ export default function Manage() {
 				config,
 			)
 			.then((res) => {
-				console.log(res.data.gamers);
 				setGamers(res.data.gamers);
 			});
 	}, []);
@@ -50,6 +49,7 @@ export default function Manage() {
 	};
 
 	const getDayInfo = (e) => {
+		e.preventDefault();
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',

@@ -16,18 +16,12 @@
 	color: white;
 }
 
-#navMeta {
+#navMeta, #navListContainer {
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	margin-left: 20px;
 	font-size: 1.5rem;
-	width: 20%;
-}
-
-#navListContainer {
-	width: 20%;
-	font-size: 1.5rem;
+	width: 15%;
 }
 #navList {
 	list-style: none;
@@ -35,4 +29,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
+}
+
+.activeLink{
+    border-bottom: 2px solid #4285F4;
 }

@@ -37,12 +37,12 @@
 	align-items: center;
 	text-transform: uppercase;
 }
-input {
+.loginInput {
 	outline: none;
 	border: 2px solid blue;
 	margin: 20px;
 }
-input:hover {
+.loginInput:hover {
 	color: white;
 	background-color: black;
 }
@@ -54,7 +54,7 @@ input:hover {
 	font-size: 18px;
 	border-radius: 10px;
 }
-Button {
+#loginForm > Button{
 	color: black;
 	background: rgb(228, 223, 215);
 	border-radius: 5px;
@@ -64,7 +64,7 @@ Button {
 	left: 9rem;
 	height: 35px;
 }
-Button:hover {
+#loginForm > Button:hover {
 	color: rgb(228, 223, 215);
 	background: black;
 }
