@@ -4,7 +4,7 @@ const PC = require('../models/PC');
 const moment = require('moment');
 
 const addGamer = asyncHandler(async (req, res) => {
-	const { name, money, amountOfTime, pcId, gamerId } = req.body;
+	const { name, money, amountOfTime, pcId, gamerId, selectedGame } = req.body;
 	const gamer = await Gamer.findOne({ _id: gamerId });
 
 	if (gamer && gamer.createdOn === moment().format('MM/DD/YYYY')) {
@@ -31,7 +31,12 @@ const addGamer = asyncHandler(async (req, res) => {
 			isPlaying: true,
 			totalMoneyPaid: money,
 			totalTime: amountOfTime,
+<<<<<<< HEAD
+			selectedGame: selectedGame,
+			createdOn: moment().format('DD/MM/YYYY')
+=======
 			createdOn: moment().format('MM/DD/YYYY'),
+>>>>>>> origin/develop_pranav
 		});
 
 		const pc = await PC.findOne({ pcNumber: pcId });

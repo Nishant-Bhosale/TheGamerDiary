@@ -1,17 +1,18 @@
 #devicesContainer{
     display: grid;
-    width: 80vw;
+    width: 90vw;
     margin: 0 auto;
     margin-bottom: 20px;
-    padding: 80px 50px;
-    grid-template: repeat(1, 300px)/repeat(auto-fit, 350px);
+    padding: 50px;
+    grid-template: repeat(1, 350px)/repeat(auto-fit, 400px);
     align-items: center;
     justify-content: center;
     grid-gap: 70px;
     grid-auto-flow: dense;
-    grid-auto-rows: 300px;
+    grid-auto-rows: 350px;
     background-color: #eeeef1;
 }
+/* Available Device section */
 #deviceEntry{
     position: relative;
     justify-self: center;
@@ -29,5 +30,102 @@
     justify-content: space-evenly;
 }
 #deviceEntry:hover{
-    border-color: black;
+    border-color: #fa0000;
+}
+
+#deviceEntry span{
+    font-size: 1.2em;
+    font-weight: 600;
+}
+#pcInfo, #selectedInfo{
+    background-color: orange;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#deviceOptions, #options{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: red;
+}
+#submitContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: greenyellow;
+}
+#confirmContainer, #sumbitOptions{
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Active Device section */
+#userDevice{
+    background-color: yellow;
+    height: 70vh;
+    width: 40vw;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#userDevice span{
+    font-size: 1.4em;
+    letter-spacing: 0.015em;
+    font-weight: 600;
+}
+
+#userInfo, #updatedInfo{
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 15%;
+    justify-content: space-between;
+}
+#selectedGame{
+    width: 90%;
+    margin: 0 auto;
+    background-color: orange;
+
+}
+#countdownTimer{
+    background-color: skyblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: uppercase;
+    width: 90%;
+    height: 30%;
+}
+#countdownTimer span:nth-child(1){
+    font-size: 2em;
+}
+#countdownTimer span:nth-child(2){
+    color: red;
+    font-size: 4em;
+}
+#userOptions{
+    background-color: red;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+#userActions{
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+
 }
