@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Admin.module.css';
 import axios from 'axios';
 import { useHistory } from 'react-router';
-
+import Logo from '../../images/logo.png';
 //Redux specifc
 import { useDispatch } from 'react-redux';
 import { getAdminStatus } from './adminSlice';
@@ -80,7 +80,12 @@ export default function Admin() {
 	};
 	const changeOpen = () => setOpen(false);
 	return (
-		<div id={styles.formContainer}>
+		<div
+			id={styles.formContainer}
+			style={{
+				backgroundImage: `url(${Logo})`,
+			}}
+		>
 			<form action="#" id={styles.loginForm} onSubmit={handleSubmit}>
 				<AlertUtil
 					message={response.message}
