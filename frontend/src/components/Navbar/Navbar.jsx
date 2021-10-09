@@ -12,7 +12,6 @@ export default function Navbar() {
 					</div>
 				</Link>
 			</div>
-
 			<div id={styles.navListContainer}>
 				<ul id={styles.navList}>
 					<li className={styles.navLi}>

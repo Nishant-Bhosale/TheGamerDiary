@@ -1,3 +1,11 @@
+#spinnerContainer, #errorId{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 #devicesContainer{
     display: grid;
     width: 90vw;

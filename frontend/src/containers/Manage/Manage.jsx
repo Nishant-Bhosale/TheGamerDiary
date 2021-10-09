@@ -66,6 +66,7 @@ export default function Manage() {
 	};
 
 	const getDayInfo = (e) => {
+		e.preventDefault();
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
