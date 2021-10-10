@@ -23,6 +23,7 @@
 	justify-content: space-evenly;
 	font-size: 1.25rem;
 	padding: 5px;
+	margin-right: 0.75rem;
 }
 #navList {
 	list-style: none;
@@ -40,6 +41,7 @@
 	#navMeta {
 		left: 20px;
 	}
+
 	#manage {
 		right: 20px;
 	}
