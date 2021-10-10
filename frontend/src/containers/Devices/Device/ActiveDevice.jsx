@@ -166,8 +166,8 @@ export default function ActiveDevice({ userDevice }) {
 				changeOpen={changeOpen}
 			/>
 			<div id={styles.userInfo}>
-				<span>Session Name: {currentGamer.name}</span>
-				<span>Session ID: {currentGamer._id}</span>
+				<span>Player Name: {currentGamer.name}</span>
+				{/* <span>Session ID: {currentGamer._id}</span> */}
 			</div>
 			<div id={styles.selectedGame}>
 				<span>Game Selected: {currentGamer.selectedGame.game}</span>
@@ -211,7 +211,7 @@ export default function ActiveDevice({ userDevice }) {
 					startIcon={!edit ? <Edit /> : <Cancel />}
 					onClick={handleEditClick}
 				>
-					{!edit ? 'Edit' : 'Cancel'}
+					{!edit ? 'Increase Time' : 'Cancel'}
 				</Button>
 				<Button
 					style={{ width: '40%', color: '#ED6C02', borderColor: '#ED6C02' }}
