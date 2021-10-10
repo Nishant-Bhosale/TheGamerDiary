@@ -86,3 +86,51 @@
 	font-weight: 600;
 	color: #388e3c;
 }
+
+@media (min-width: 300px) and (max-width: 600px) {
+	#managerHeading,
+	#fetchHeading {
+		font-size: 2em;
+		padding: 5px 10px;
+		letter-spacing: inherit;
+		line-height: 1.2em;
+		text-align: center;
+		width: 85%;
+	}
+	.dayInfo {
+		width: 85%;
+		height: 70vh;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+	.infoDiv {
+		width: 90%;
+		height: 30%;
+	}
+	.dateInputWrapper {
+		width: 85%;
+		height: 30vh;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+	.dateInputWrapper > Button {
+		width: 80%;
+	}
+	.adminAlertContainer {
+		width: 85%;
+	}
+	#managerHeading {
+		margin-top: 100px;
+	}
+	#adminMetaContainer > Button {
+		top: 30px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 85%;
+	}
+	#adminMetaContainer {
+		height: 35vh;
+	}
+}

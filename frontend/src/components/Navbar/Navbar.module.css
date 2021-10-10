@@ -16,7 +16,8 @@
 	color: white;
 }
 
-#navMeta, #navListContainer {
+#navMeta,
+#navListContainer {
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -31,6 +32,15 @@
 	justify-content: space-evenly;
 }
 
-.activeLink{
-    border-bottom: 2px solid #4285F4;
+.activeLink {
+	border-bottom: 2px solid #4285f4;
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+	#navMeta {
+		left: 20px;
+	}
+	#manage {
+		right: 20px;
+	}
 }

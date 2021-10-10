@@ -14,3 +14,11 @@
 .gamerWrapper span {
 	font-weight: 600;
 }
+
+@media (min-width: 300px) and (max-width: 600px) {
+	.gamerWrapper {
+		width: 85%;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}

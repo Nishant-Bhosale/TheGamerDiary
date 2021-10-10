@@ -1,39 +1,45 @@
-#footerContainer{
-    position: absolute;
-    bottom: 0;
-    background-color: #23272a;
-    color: white;
-    height: 80px;
-    width: 100%;
+#footerContainer {
+	position: absolute;
+	bottom: 0;
+	background-color: #23272a;
+	color: white;
+	height: 80px;
+	width: 100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
-#copyInfo{
-    margin-left: 20px;
+#copyInfo {
+	margin-left: 20px;
 }
-#socialHandles{
-    width: 15%;
+#socialHandles {
+	width: 15%;
 }
-#socialList{
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+#socialList {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+.socials {
+	text-decoration: none;
+	color: white;
+	transition: all 200ms linear;
+}
+#ig:hover {
+	color: #f20089;
+}
+#git:hover {
+	color: #ffff99;
+}
+#ln:hover {
+	color: #007dbb;
+}
 
-}
-.socials{
-    text-decoration: none;
-    color: white;
-    transition: all 200ms linear;
-}
-#ig:hover{
-    color: #f20089;
-}
-#git:hover{
-    color: #ffff99
-}
-#ln:hover{
-    color: #007dbb
+@media (min-width: 300px) and (max-width: 600px) {
+	#socialHandles {
+		width: 40%;
+		margin-right: 15px;
+	}
 }

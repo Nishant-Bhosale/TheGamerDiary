@@ -54,7 +54,7 @@
 	font-size: 18px;
 	border-radius: 10px;
 }
-#loginForm > Button{
+#loginForm > Button {
 	color: black;
 	background: rgb(228, 223, 215);
 	border-radius: 5px;
@@ -67,4 +67,10 @@
 #loginForm > Button:hover {
 	color: rgb(228, 223, 215);
 	background: black;
+}
+@media (min-width: 300px) and (max-width: 600px) {
+	#loginForm {
+		min-height: 300px;
+		width: 85%;
+	}
 }

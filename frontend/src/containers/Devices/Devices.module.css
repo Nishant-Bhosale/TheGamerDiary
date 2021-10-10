@@ -160,3 +160,55 @@
 	display: flex;
 	justify-content: space-evenly;
 }
+@media (min-width: 300px) and (max-width: 600px) {
+	#devicesContainer {
+		width: 85vw;
+		padding: 50px 20px;
+		grid-template: repeat(1, 550px) / repeat(auto-fit, 400px);
+		grid-auto-rows: 550px;
+	}
+	#deviceEntry {
+		width: 75%;
+		padding: 5px;
+	}
+	#pcInfo,
+	#selectedInfo {
+		height: 15%;
+	}
+	#deviceOptions {
+		flex-direction: column;
+		height: 170px;
+	}
+
+	/* Handling active device */
+	#userDevice {
+		height: 85vh;
+		width: 90vw;
+		padding: 5px;
+	}
+	#userDevice span {
+		font-size: 1.25em;
+		letter-spacing: initial;
+	}
+	#userInfo,
+	#updatedInfo {
+		box-sizing: content-box;
+		justify-content: space-around;
+		width: 95%;
+		height: 15%;
+		padding: 5px;
+	}
+	#countdownTimer {
+		padding: 0 2px;
+		width: 95%;
+	}
+	#userOptions {
+		width: 95%;
+		box-sizing: content-box;
+	}
+	#selectedGame {
+		box-sizing: content-box;
+		width: 95%;
+		padding: 5px;
+	}
+}
