@@ -11,8 +11,11 @@ hour, Rs.100/- for two hours, etc.
 5. Dashboard⬜ to simultaneously see all the timers on the screen
 6. Input field to enter the name of the customer for a particular session
 7. Report generated at the end of the day should include
+
 a) Total Hours played🕹
+
 b) Total users🧑 in the day
+
 c) Total revenue💲💸
 
 Our Solution - MERN stack realtime web application to manage a game parlour
