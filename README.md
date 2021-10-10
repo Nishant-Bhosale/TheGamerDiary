@@ -22,4 +22,4 @@ Our Solution - MERN stack realtime web application to manage a game parlour
 
 Solution Deployed At - https://gamerdiary.herokuapp.com/
 
-Another version - https://the-gamer-diary.herokuapp.com/
+#2 Implementation (Uniquely designed) - https://the-gamer-diary.herokuapp.com/
