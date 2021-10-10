@@ -20,7 +20,6 @@ c) Total revenue💲💸
 
 Our Solution - MERN stack realtime web application to manage a game parlour
 
-/*Insert furthur details here*/
-
 Solution Deployed At - https://gamerdiary.herokuapp.com/
+
 Another version - https://the-gamer-diary.herokuapp.com/
