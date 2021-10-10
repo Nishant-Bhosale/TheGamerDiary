@@ -1,17 +1,18 @@
-const express = require("express");
-require("dotenv").config();
-const cors = require("cors");
-const { errorMiddleware, notFound } = require("./middleware/errorMiddleware");
+const express = require('express');
+require('dotenv').config();
+const cors = require('cors');
+const path = require('path');
+const { errorMiddleware, notFound } = require('./middleware/errorMiddleware');
 const PORT = process.env.PORT;
 
 //Importing Routers
-const userRouter = require("./routes/user");
-const deviceRouter = require("./routes/device");
-const adminRouter = require("./routes/admin");
-const authoriseAdmin = require("./routes/authoriseAdmin");
+const userRouter = require('./routes/user');
+const deviceRouter = require('./routes/device');
+const adminRouter = require('./routes/admin');
+const authoriseAdmin = require('./routes/authoriseAdmin');
 
 //Initializing connection to the database
-const connectDB = require("./config/db");
+const connectDB = require('./config/db');
 connectDB();
 
 //Setting express application
@@ -24,10 +25,21 @@ app.use(deviceRouter);
 app.use(adminRouter);
 app.use(authoriseAdmin);
 
-//Disabled to get accurate errors
+const dirname = path.resolve();
 
-// app.use(errorMiddleware);
-// app.use(notFound);
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(dirname, '/frontend/build')));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(dirname, '/frontend', 'build', 'index.html'));
+	});
+} else {
+	app.get('/', (req, res) => {
+		res.send('API is running...');
+	});
+}
+
+app.use(errorMiddleware);
+app.use(notFound);
 
 app.listen(PORT, () =>
 	console.log(`Server running at http://127.0.0.1:${PORT}`),
