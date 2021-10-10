@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Devices.module.css';
 
 import { useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ export default function Devices() {
 	let userDevice = null;
 
 	const activeDevices = devices.filter((device) => device.isOccupied === true);
-	const freeDevices = devices.filter(device => device.isOccupied === false);
+	const freeDevices = devices.filter((device) => device.isOccupied === false);
 
 	activeDevices.map((device, index) => {
 		if (device.currentGamer._id === localStorage.getItem('gamerId')) {
@@ -27,9 +27,8 @@ export default function Devices() {
 			<div id={styles.spinnerContainer}>
 				<CircularProgress />
 			</div>
-		)
-	}
-	else {
+		);
+	} else {
 		if (userDevice) {
 			return <ActiveDevice userDevice={userDevice} />;
 		} else {

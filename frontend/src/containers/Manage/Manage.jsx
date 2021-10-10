@@ -19,7 +19,6 @@ export default function Manage() {
 	const [gamers, setGamers] = useState([]);
 	const [specificDayGamers, setspecificDayGamers] = useState([]);
 
-
 	const [totalMoney, setTotalMoney] = useState(0);
 	const [totalTime, setTotalTime] = useState(0);
 
@@ -35,7 +34,7 @@ export default function Manage() {
 		},
 	};
 
-	const [response, setResponse] = useState({})
+	const [response, setResponse] = useState({});
 	//For handling fetch today error
 	const [open, setOpen] = useState(false);
 	//For handling fetch specific date error
@@ -70,11 +69,11 @@ export default function Manage() {
 				setLoading(false);
 			})
 			.catch(() => {
-				setResponse(prev => ({
+				setResponse((prev) => ({
 					...prev,
 					message: 'Failed to fetch users',
-					operation: 'warning'
-				}))
+					operation: 'warning',
+				}));
 				setOpen(true);
 				setLoading(false);
 			});
@@ -113,33 +112,32 @@ export default function Manage() {
 
 						setSpecifcTotalMoney(money);
 						setSpecificTotalTime(time);
-
 					} else {
 						setspecificDayGamers([]);
-						setResponse(prev => ({
+						setResponse((prev) => ({
 							...prev,
 							message: response.data.message,
-							operation: 'info'
-						}))
+							operation: 'info',
+						}));
 						setSpecificFetchOpen(true);
 						setSpecificDateLoading(false);
 					}
 				})
 				.catch(() => {
-					setResponse(prev => ({
+					setResponse((prev) => ({
 						...prev,
 						message: 'Internal server error',
-						operation: 'warning'
-					}))
+						operation: 'warning',
+					}));
 					setSpecificFetchOpen(true);
 					setSpecificDateLoading(false);
 				});
 		} else {
-			setResponse(prev => ({
+			setResponse((prev) => ({
 				...prev,
 				message: 'Please enter a valid date',
-				operation: 'info'
-			}))
+				operation: 'info',
+			}));
 			setSpecificFetchOpen(true);
 		}
 	};
@@ -148,10 +146,10 @@ export default function Manage() {
 		setspecificDayGamers([]);
 		setSpecifcTotalMoney(0);
 		setSpecificTotalTime(0);
-		setSpecificFetchOpen(false)
+		setSpecificFetchOpen(false);
 		setDate(null);
-		setResponse({})
-	}
+		setResponse({});
+	};
 
 	const changeOpen = () => setOpen(false);
 	const changeSpecifcFetchOpen = () => setSpecificFetchOpen(false);
@@ -169,29 +167,45 @@ export default function Manage() {
 					logout
 				</Button>
 			</div>
-			<AlertUtil className={styles.adminAlert} message={response.message} type={response.operation} open={open} changeOpen={changeOpen} />
-			{loading && <div className={styles.adminLoadingContainer}><CircularProgress /></div>}
-			{(gamers.length !== 0 && !loading) && <div className={styles.dayInfo}>
-				<div className={styles.infoDiv}>
-					<span>Total Active users</span>
-					<span>{gamers.length}</span>
-				</div >
-				<div className={styles.infoDiv}>
-					<span>Total Revenue</span>
-					<span>&#8377;{totalMoney}</span>
+			<AlertUtil
+				className={styles.adminAlert}
+				message={response.message}
+				type={response.operation}
+				open={open}
+				changeOpen={changeOpen}
+			/>
+			{loading && (
+				<div className={styles.adminLoadingContainer}>
+					<CircularProgress />
 				</div>
-				<div className={styles.infoDiv}>
-					<span>Total Time spent</span>
-					<span>{totalTime}</span>
+			)}
+			{gamers.length !== 0 && !loading && (
+				<div className={styles.dayInfo}>
+					<div className={styles.infoDiv}>
+						<span>Total Active users</span>
+						<span>{gamers.length}</span>
+					</div>
+					<div className={styles.infoDiv}>
+						<span>Total Revenue</span>
+						<span>&#8377;{totalMoney}</span>
+					</div>
+					<div className={styles.infoDiv}>
+						<span>Total Time spent</span>
+						<span>{totalTime}</span>
+					</div>
 				</div>
-			</div>}
+			)}
 
-			{(gamers.length != 0 && !loading) && <div id={styles.activeUsersContainer}>
-				{gamers.map((gamer) => {
-					return <Gamer key={gamer._id} gamer={gamer} />;
-				})}
-			</div>}
-			{gamers.length == 0 && <span id={styles.fetchHeading}>No record found for today</span>}
+			{gamers.length !== 0 && !loading && (
+				<div id={styles.activeUsersContainer}>
+					{gamers.map((gamer) => {
+						return <Gamer key={gamer._id} gamer={gamer} />;
+					})}
+				</div>
+			)}
+			{gamers.length === 0 && (
+				<span id={styles.fetchHeading}>No record found for today</span>
+			)}
 			<span id={styles.fetchHeading}>Fetch Users from a specific date</span>
 			<div className={styles.dateInputWrapper}>
 				<LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -204,39 +218,58 @@ export default function Manage() {
 						renderInput={(params) => <TextField {...params} />}
 					/>
 				</LocalizationProvider>
-				<Button variant="outlined" color="primary" startIcon={<CloudDownload />} onClick={getDayInfo}>
+				<Button
+					variant="outlined"
+					color="primary"
+					startIcon={<CloudDownload />}
+					onClick={getDayInfo}
+				>
 					Get Report
 				</Button>
-				<Button variant="outlined" color="error" startIcon={<Remove />} onClick={handleRemove}>
+				<Button
+					variant="outlined"
+					color="error"
+					startIcon={<Remove />}
+					onClick={handleRemove}
+				>
 					Hide Report
 				</Button>
 			</div>
-			{specificDateLoading && <div className={styles.adminLoadingContainer}><CircularProgress /></div>}
-			{
-				(specificDayGamers.length > 0 && !specificDateLoading) ? (
-					specificDayGamers.map((gamer) => {
-						return <Gamer key={gamer._id} gamer={gamer} />
-					})
-				) : (
-					<div className={styles.adminAlertContainer}>
-						<AlertUtil message={response.message} type={response.operation} open={specifcFetchOpen} changeOpen={changeSpecifcFetchOpen} />
+			{specificDateLoading && (
+				<div className={styles.adminLoadingContainer}>
+					<CircularProgress />
+				</div>
+			)}
+			{specificDayGamers.length > 0 && !specificDateLoading ? (
+				specificDayGamers.map((gamer) => {
+					return <Gamer key={gamer._id} gamer={gamer} />;
+				})
+			) : (
+				<div className={styles.adminAlertContainer}>
+					<AlertUtil
+						message={response.message}
+						type={response.operation}
+						open={specifcFetchOpen}
+						changeOpen={changeSpecifcFetchOpen}
+					/>
+				</div>
+			)}
+			{!specificDateLoading && specificDayGamers.length !== 0 && (
+				<div className={styles.dayInfo}>
+					<div className={styles.infoDiv}>
+						<span>Total users</span>
+						<span>{specificDayGamers.length}</span>
 					</div>
-				)
-			}
-			{(!specificDateLoading && specificDayGamers.length !== 0) && <div className={styles.dayInfo}>
-				<div className={styles.infoDiv}>
-					<span>Total users</span>
-					<span>{specificDayGamers.length}</span>
-				</div >
-				<div className={styles.infoDiv}>
-					<span>Total Revenue</span>
-					<span>&#8377;{specificTotalMoney}</span>
+					<div className={styles.infoDiv}>
+						<span>Total Revenue</span>
+						<span>&#8377;{specificTotalMoney}</span>
+					</div>
+					<div className={styles.infoDiv}>
+						<span>Total Time spent</span>
+						<span>{specificTotalTime}</span>
+					</div>
 				</div>
-				<div className={styles.infoDiv}>
-					<span>Total Time spent</span>
-					<span>{specificTotalTime}</span>
-				</div>
-			</div>}
-		</div >
+			)}
+		</div>
 	);
 }

@@ -102,14 +102,14 @@ export default function Device({ device }) {
 
 	const handleGameChange = ({ target }) => {
 		let cf = 0;
-		if (target.value == 'GTA V' || target.value == 'Control') {
+		if (target.value === 'GTA V' || target.value === 'Control') {
 			cf = 1;
 		} else if (
-			target.value == 'Cyberpunk 2077' ||
-			target.value == 'Minecraft'
+			target.value === 'Cyberpunk 2077' ||
+			target.value === 'Minecraft'
 		) {
 			cf = 2;
-		} else if (target.value == 'Red Dead Redemption 2') {
+		} else if (target.value === 'Red Dead Redemption 2') {
 			cf = 3;
 		}
 		setSession((prev) => ({
