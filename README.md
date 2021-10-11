@@ -20,10 +20,10 @@ c) Total revenue💲💸
 
 Our Solution - MERN stack realtime web application to manage a game parlour
 
-Solution Deployed At - https://gamerdiary.herokuapp.com/
+Solution Deployed At - https://the-gamer-diary.herokuapp.com/ 
 
 Note: To access and view the manage page use the following credentials -
 username: serveradmin@gmail.com
 password: serveradmin1234
 
-#2 Implementation (Uniquely themed) - https://the-gamer-diary.herokuapp.com/
+#2 Implementation (Uniquely themed) - https://gamerdiary.herokuapp.com/
