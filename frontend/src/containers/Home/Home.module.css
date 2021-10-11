@@ -27,8 +27,22 @@
 	overflow: hidden;
 }
 
+.mainHeading {
+	position: absolute;
+	top: 5rem;
+	left: 5rem;
+	z-index: 100;
+	color: rgb(102, 45, 156);
+	font-size: 2.3rem;
+}
 @media (min-width: 300px) and (max-width: 600px) {
 	#homeDashboardHeading {
 		width: 80vw;
+	}
+
+	.mainHeading {
+		font-size: 0.75rem;
+		top: 5rem;
+		left: 1rem;
 	}
 }
